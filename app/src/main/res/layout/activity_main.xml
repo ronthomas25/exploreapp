@@ -133,6 +133,24 @@
         android:paddingRight="10dp"
         android:src="@drawable/paragonlogo" />
 
+        <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/icon_bar"
+        android:src="@drawable/iconbar"
+        android:layout_alignParentBottom="true"
+        android:scaleType="fitXY"
+        android:layout_alignParentEnd="true" />
+
+
+      <ImageView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:id="@+id/location_icon"
+          android:src="@drawable/locationicon"
+          android:layout_alignLeft="@id/icon_bar"
+          android:layout_alignParentBottom="true"
+
     </RelativeLayout>
 
 
