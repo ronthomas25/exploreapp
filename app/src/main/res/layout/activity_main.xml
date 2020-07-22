@@ -3,13 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:andoid="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:weightSum="100"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    tools:ignore="NotSibling">
 
     <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
         tools:ignore="ExtraText">
 
      <RelativeLayout
@@ -90,30 +93,74 @@
         android:layout_below="@id/munnar_pic"
         android:layout_marginTop="-20dp" />
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/kochi_image"
-        android:src="@drawable/kochi"
-        android:layout_below="@id/most_searched_places"
-        android:layout_marginTop="5dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp" />
+         <HorizontalScrollView
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:id="@+id/Horizontal_scroll"
+             android:scrollbars="none"
+             android:layout_below="@+id/most_searched_places">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/kochi_text"
-        android:text="Kochi"
-        android:textStyle="bold"
-        android:textSize="30sp"
-        android:textAllCaps="true"
-        android:layout_alignLeft="@+id/kochi_image"
-        android:layout_alignTop="@id/kochi_image"
-        android:layout_alignRight="@id/kochi_image"
-        android:layout_alignBottom="@id/kochi_image"
-        android:textColor="#FFFFFF"
-        android:paddingLeft="10dp" />
+             <LinearLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:orientation="horizontal">
+
+
+
+           <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/kochi_image"
+            android:src="@drawable/kochi"
+            android:layout_below="@id/Horizontal_scroll"
+            android:layout_marginTop="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp" />
+
+
+
+         <ImageView
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:id="@+id/kumarakom_image"
+             android:src="@drawable/kumarakom"
+             android:layout_marginTop="5dp"
+             android:paddingLeft="40dp"
+             android:paddingRight="10dp"/>
+
+         <ImageView
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:id="@+id/kovalam_image"
+             android:src="@drawable/kovalam"
+             android:layout_marginTop="5dp"
+             android:paddingLeft="40dp"
+             android:paddingRight="10dp" />
+
+                 <ImageView
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:id="@+id/varkala_image"
+                     android:src="@drawable/varkala"
+                     android:layout_marginTop="5dp"
+                     android:paddingLeft="40dp"
+                     android:paddingRight="10dp" />
+
+                 <ImageView
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:id="@+id/alp_image"
+                     android:src="@drawable/alp"
+                     android:layout_marginTop="5dp"
+                     android:paddingLeft="40dp"
+                     android:paddingRight="10dp" />
+
+
+
+             </LinearLayout>
+
+         </HorizontalScrollView>
+
 
     <TextView
         android:layout_width="wrap_content"
@@ -124,32 +171,137 @@
         android:textSize="17sp"
         android:paddingLeft="10dp"
         android:paddingTop="1dp"
-        android:layout_below="@id/kochi_image"
+        android:layout_below="@id/Horizontal_scroll"
         android:layout_marginTop="25dp" />
+
+
+         <HorizontalScrollView
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:id="@+id/Horizontal_scroll_res"
+             android:scrollbars="none"
+             android:layout_below="@+id/popular_restaurants">
+
+         <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:orientation="horizontal">
+
 
          <ImageView
              android:id="@+id/paragon_logo"
-             android:layout_width="301dp"
-             android:layout_height="144dp"
-             android:layout_below="@id/popular_restaurants"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
              android:layout_marginTop="5dp"
-             android:paddingLeft="-130dp"
+             android:paddingLeft="10dp"
              android:paddingRight="10dp"
              android:src="@drawable/paragonlogo" />
 
+         <ImageView
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:id="@+id/thakkaram_image"
+             android:src="@drawable/thakkaram"
+             android:layout_marginTop="5dp"
+             android:paddingLeft="10dp"
+             android:paddingRight="10dp" />
+
+
+         </LinearLayout>
+
+         </HorizontalScrollView>
+
+
+
+
+
+
      </RelativeLayout>
+
 
     </ScrollView>
 
-    <ImageView
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/icon_bar"
-        android:src="@drawable/iconbar2"
-        android:scaleType="fitXY"
-        android:layout_alignParentBottom="true" />
+        android:layout_alignParentBottom="true" >
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/icon_bar"
+            android:src="@drawable/iconbar2"
+            android:layout_alignParentBottom="true"
+            android:scaleType="fitXY" />
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:id="@+id/location_icon"
+            android:src="@drawable/locationicon"
+            android:paddingBottom="35dp"
+            android:paddingLeft="20dp" />
 
+         <ImageView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignParentBottom="true"
+             android:id="@+id/search_icon"
+             android:src="@drawable/searchicon"
+             android:paddingLeft="140dp"
+             android:paddingBottom="35dp" />
 
-</RelativeLayout>
+          <ImageView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentBottom="true"
+              android:id="@+id/notification_icon"
+              android:src="@drawable/notificationicon"
+              android:paddingLeft="260dp"
+              android:paddingBottom="35dp" />
+
+          <ImageView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentBottom="true"
+              android:id="@+id/user_icon"
+              android:src="@drawable/usericon"
+              android:paddingLeft="370dp"
+              android:paddingBottom="35dp" />
+
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentBottom="true"
+              android:text="Location"
+              android:paddingBottom="15dp"
+              android:paddingLeft="10dp" />
+
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentBottom="true"
+              android:text="Search"
+              android:paddingBottom="15dp"
+              android:paddingLeft="130dp" />
+
+          <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignParentBottom="true"
+             android:text="Notification"
+             android:paddingBottom="15dp"
+             android:paddingLeft="240dp" />
+
+           <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignParentBottom="true"
+             android:text="User"
+             android:paddingBottom="15dp"
+             android:paddingLeft="365dp" />
+
+    </RelativeLayout>
+
+    </RelativeLayout>
