@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:andoid="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:weightSum="100"
     tools:context=".MainActivity"
@@ -12,12 +13,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="none"
+        android:fillViewport="true"
         tools:ignore="ExtraText">
 
      <RelativeLayout
          android:layout_width="match_parent"
          android:layout_height="match_parent" >
-
 
     <ImageView
         android:layout_width="match_parent"
@@ -27,7 +28,7 @@
         android:scaleType="fitXY" />
 
 
-         <TextView
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Discover"
@@ -50,19 +51,7 @@
         android:layout_below="@id/discover"
         tools:ignore="InvalidId" />
 
-     <RelativeLayout
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:id="@+id/view_flipper_relative"
-         android:layout_below="@id/top_picks">
-
-         <ViewFlipper
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:autoStart="true"
-             android:flipInterval="2000">
-
-         <ImageView
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/top_picks"
@@ -72,187 +61,68 @@
         android:id="@+id/munnar_pic"
         android:src="@drawable/munnar" />
 
+    <TextView
+        android:id="@+id/munnar_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/munnar_pic"
+        android:layout_alignTop="@id/munnar_pic"
+        android:layout_alignRight="@id/munnar_pic"
+        android:layout_alignBottom="@id/munnar_pic"
+        android:layout_marginStart="1dp"
+        android:layout_marginLeft="1dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginRight="1dp"
+        android:layout_marginBottom="2dp"
+        android:gravity="center"
+        android:text="Munnar"
+        android:textAllCaps="true"
+        android:textColor="#FFFFFF"
+        android:textSize="50sp"
+        android:textStyle="bold" />
 
-         <ImageView
+         <TextView
+             android:id="@+id/most_searched_places"
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
-             android:layout_below="@id/top_picks"
-             android:layout_marginTop="-30dp"
+             android:layout_below="@id/munnar_pic"
+             android:layout_marginTop="-28dp"
              android:paddingLeft="10dp"
-             android:paddingRight="10dp"
-             android:id="@+id/wayanad_pic"
-             android:src="@drawable/wayanad" />
-
-
-             <ImageView
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:layout_below="@id/top_picks"
-                 android:layout_marginTop="-30dp"
-                 android:paddingLeft="10dp"
-                 android:paddingRight="10dp"
-                 android:id="@+id/vagamon_pic"
-                 android:src="@drawable/vagamon" />
-
-
-
-
-         </ViewFlipper>
-
-     </RelativeLayout>
-
-
-
+             android:paddingTop="1dp"
+             android:text="Most searched places"
+             android:textColor="#030303"
+             android:textSize="17sp" />
 
 
          <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/most_searched_places"
-        android:text="Most searched places"
-        android:textColor="#030303"
-        android:textSize="17sp"
-        android:paddingLeft="10dp"
-        android:paddingTop="1dp"
-        android:layout_below="@id/view_flipper_relative"
-        android:layout_marginTop="-20dp" />
-
-         <HorizontalScrollView
-             android:layout_width="match_parent"
+             android:id="@+id/popular_restaurants"
+             android:layout_width="wrap_content"
              android:layout_height="wrap_content"
-             android:id="@+id/Horizontal_scroll"
-             android:scrollbars="none"
-             android:layout_below="@+id/most_searched_places">
+             android:layout_below="@id/most_searched_recycler"
+             android:layout_marginTop="20dp"
+             android:paddingLeft="10dp"
+             android:paddingTop="1dp"
+             android:text="Popular Restaurants"
+             android:textColor="#030303"
+             android:textSize="17sp" />
 
-             <LinearLayout
-                 android:layout_width="match_parent"
-                 android:layout_height="wrap_content"
-                 android:orientation="horizontal">
+         <androidx.recyclerview.widget.RecyclerView
+             android:id="@+id/restrecycler"
+             android:layout_width="391dp"
+             android:layout_height="217dp"
+             android:layout_below="@+id/popular_restaurants"
+             android:layout_marginLeft="10dp"
+             android:layout_marginTop="4dp"
+             android:layout_marginBottom="12dp" />
 
-
-                 <ImageView
-                     android:id="@+id/kochi_image"
-                     android:layout_width="match_parent"
-                     android:layout_height="wrap_content"
-                     android:layout_below="@id/Horizontal_scroll"
-                     android:layout_marginTop="5dp"
-                     android:paddingLeft="10dp"
-                     android:paddingRight="10dp"
-                     android:src="@drawable/kochi" />
-
-
-                 <ImageView
-                     android:id="@+id/kumarakom_image"
-                     android:layout_width="match_parent"
-                     android:layout_height="wrap_content"
-                     android:layout_marginTop="5dp"
-                     android:paddingLeft="10dp"
-                     android:paddingRight="10dp"
-                     android:src="@drawable/kumarakom" />
-
-                 <ImageView
-                     android:id="@+id/kovalam_image"
-                     android:layout_width="match_parent"
-                     android:layout_height="wrap_content"
-                     android:layout_marginTop="5dp"
-                     android:paddingLeft="10dp"
-                     android:paddingRight="10dp"
-                     android:src="@drawable/kovalam" />
-
-                 <ImageView
-                     android:id="@+id/varkala_image"
-                     android:layout_width="match_parent"
-                     android:layout_height="wrap_content"
-                     android:layout_marginTop="5dp"
-                     android:paddingLeft="10dp"
-                     android:paddingRight="10dp"
-                     android:src="@drawable/varkala" />
-
-                 <ImageView
-                     android:id="@+id/alp_image"
-                     android:layout_width="match_parent"
-                     android:layout_height="wrap_content"
-                     android:layout_marginTop="5dp"
-                     android:paddingLeft="10dp"
-                     android:paddingRight="10dp"
-                     android:src="@drawable/alp" />
-
-
-             </LinearLayout>
-
-         </HorizontalScrollView>
-
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/popular_restaurants"
-        android:text="Popular Restaurants"
-        android:textColor="#030303"
-        android:textSize="17sp"
-        android:paddingLeft="10dp"
-        android:paddingTop="1dp"
-        android:layout_below="@id/Horizontal_scroll"
-        android:layout_marginTop="25dp" />
-
-
-         <HorizontalScrollView
-             android:layout_width="match_parent"
+         <androidx.recyclerview.widget.RecyclerView
+             android:id="@+id/most_searched_recycler"
+             android:layout_width="398dp"
              android:layout_height="wrap_content"
-             android:id="@+id/Horizontal_scroll_res"
-             android:scrollbars="none"
-             android:layout_below="@+id/popular_restaurants">
-
-             <LinearLayout
-                 android:layout_width="match_parent"
-                 android:layout_height="wrap_content"
-                 android:orientation="horizontal">
-
-
-                 <ImageView
-                     android:id="@+id/paragon_logo"
-                     android:layout_width="match_parent"
-                     android:layout_height="wrap_content"
-                     android:layout_marginTop="5dp"
-                     android:paddingLeft="10dp"
-                     android:paddingRight="10dp"
-                     android:src="@drawable/paragonlogo" />
-
-                 <ImageView
-                     android:id="@+id/thakkaram_image"
-                     android:layout_width="match_parent"
-                     android:layout_height="wrap_content"
-                     android:layout_marginTop="5dp"
-                     android:paddingLeft="10dp"
-                     android:paddingRight="10dp"
-                     android:src="@drawable/thakkaram" />
-
-                 <ImageView
-                     android:id="@+id/koco_image"
-                     android:layout_width="match_parent"
-                     android:layout_height="wrap_content"
-                     android:layout_marginTop="5dp"
-                     android:paddingLeft="10dp"
-                     android:paddingRight="10dp"
-                     android:src="@drawable/koconew" />
-
-                 <ImageView
-                     android:id="@+id/chayakkada_image"
-                     android:layout_width="match_parent"
-                     android:layout_height="wrap_content"
-                     android:layout_marginTop="5dp"
-                     android:paddingLeft="10dp"
-                     android:paddingRight="10dp"
-                     android:src="@drawable/chayakkada1" />
-
-
-             </LinearLayout>
-
-         </HorizontalScrollView>
-
-
-
-
+             android:layout_below="@+id/most_searched_places"
+             android:layout_marginLeft="10dp"
+             android:layout_marginTop="6dp" />
 
 
      </RelativeLayout>
@@ -316,7 +186,7 @@
               android:text="Location"
               android:paddingBottom="15dp"
               android:paddingLeft="10dp" />
-
++
           <TextView
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
