@@ -51,7 +51,8 @@
         android:paddingLeft="10dp"
         android:paddingTop="5dp"
         android:layout_below="@id/discover"
-        tools:ignore="InvalidId"/>
+        tools:ignore="InvalidId"
+        />
 
     <ImageView
         android:layout_width="wrap_content"
