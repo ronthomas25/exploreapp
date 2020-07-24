@@ -51,7 +51,7 @@
         android:paddingLeft="10dp"
         android:paddingTop="5dp"
         android:layout_below="@id/discover"
-        tools:ignore="InvalidId" />
+        tools:ignore="InvalidId"/>
 
     <ImageView
         android:layout_width="wrap_content"
@@ -61,7 +61,7 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:id="@+id/munnar_pic"
-        android:src="@drawable/munnar" />
+        android:src="@drawable/munnar"/>
 
     <TextView
         android:id="@+id/munnar_text"
@@ -82,7 +82,7 @@
         android:textAllCaps="true"
         android:textColor="#FFFFFF"
         android:textSize="50sp"
-        android:textStyle="bold"  />
+        android:textStyle="bold" />
 
          <TextView
              android:id="@+id/most_searched_places"
@@ -94,7 +94,7 @@
              android:paddingTop="1dp"
              android:text="Most searched places"
              android:textColor="#030303"
-             android:textSize="17sp"  />
+             android:textSize="17sp"/>
 
 
          <TextView
@@ -116,8 +116,7 @@
              android:layout_below="@+id/popular_restaurants"
              android:layout_marginLeft="10dp"
              android:layout_marginTop="4dp"
-             android:layout_marginBottom="12dp"
-             />
+             android:layout_marginBottom="12dp" />
 
          <androidx.recyclerview.widget.RecyclerView
              android:id="@+id/most_searched_recycler"
@@ -125,8 +124,7 @@
              android:layout_height="wrap_content"
              android:layout_below="@+id/most_searched_places"
              android:layout_marginLeft="10dp"
-             android:layout_marginTop="6dp"
-             />
+             android:layout_marginTop="6dp" />
 
 
      </RelativeLayout>
