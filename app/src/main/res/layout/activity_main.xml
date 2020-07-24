@@ -7,7 +7,9 @@
     android:orientation="vertical"
     android:weightSum="100"
     tools:context=".MainActivity"
-    tools:ignore="NotSibling">
+    tools:ignore="NotSibling"
+
+    >
 
     <ScrollView
         android:layout_width="match_parent"
@@ -80,7 +82,7 @@
         android:textAllCaps="true"
         android:textColor="#FFFFFF"
         android:textSize="50sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"  />
 
          <TextView
              android:id="@+id/most_searched_places"
@@ -92,7 +94,7 @@
              android:paddingTop="1dp"
              android:text="Most searched places"
              android:textColor="#030303"
-             android:textSize="17sp" />
+             android:textSize="17sp"  />
 
 
          <TextView
@@ -114,7 +116,8 @@
              android:layout_below="@+id/popular_restaurants"
              android:layout_marginLeft="10dp"
              android:layout_marginTop="4dp"
-             android:layout_marginBottom="12dp" />
+             android:layout_marginBottom="12dp"
+             />
 
          <androidx.recyclerview.widget.RecyclerView
              android:id="@+id/most_searched_recycler"
@@ -122,7 +125,8 @@
              android:layout_height="wrap_content"
              android:layout_below="@+id/most_searched_places"
              android:layout_marginLeft="10dp"
-             android:layout_marginTop="6dp" />
+             android:layout_marginTop="6dp"
+             />
 
 
      </RelativeLayout>
