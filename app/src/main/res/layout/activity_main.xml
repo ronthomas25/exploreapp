@@ -201,7 +201,7 @@
              android:layout_alignParentBottom="true"
              android:text="Notification"
              android:paddingBottom="15dp"
-             android:paddingLeft="240dp" />
+             android:paddingLeft="240dp"/>
 
            <TextView
              android:layout_width="wrap_content"
