@@ -45,14 +45,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Top Picks"
-        android:textColor="#030303"
+        android:textColor="#F3ABAB"
         android:id="@+id/top_picks"
         android:textSize="17sp"
         android:paddingLeft="10dp"
         android:paddingTop="5dp"
         android:layout_below="@id/discover"
-        tools:ignore="InvalidId"
-        />
+        tools:ignore="InvalidId" />
 
     <ImageView
         android:layout_width="wrap_content"
@@ -62,7 +61,7 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:id="@+id/munnar_pic"
-        android:src="@drawable/munnar"/>
+        android:src="@drawable/munnar" />
 
     <TextView
         android:id="@+id/munnar_text"
