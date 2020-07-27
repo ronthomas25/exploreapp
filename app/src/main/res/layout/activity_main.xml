@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:andoid="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:weightSum="100"
     tools:context=".MainActivity"
@@ -43,13 +42,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Top Picks"
-        android:textColor="#F3ABAB"
+        android:textColor="#000000"
         android:id="@+id/top_picks"
         android:textSize="17sp"
         android:paddingLeft="10dp"
         android:paddingTop="5dp"
         android:layout_below="@id/discover"
         tools:ignore="InvalidId" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/view_flipper_relative"
+            android:layout_below="@id/top_picks">
+
+            <ViewFlipper
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:autoStart="true"
+                android:flipInterval="2000">
 
     <ImageView
         android:layout_width="wrap_content"
@@ -61,32 +72,38 @@
         android:id="@+id/munnar_pic"
         android:src="@drawable/munnar" />
 
-    <TextView
-        android:id="@+id/munnar_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/munnar_pic"
-        android:layout_alignTop="@id/munnar_pic"
-        android:layout_alignRight="@id/munnar_pic"
-        android:layout_alignBottom="@id/munnar_pic"
-        android:layout_marginStart="1dp"
-        android:layout_marginLeft="1dp"
-        android:layout_marginTop="0dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginRight="1dp"
-        android:layout_marginBottom="2dp"
-        android:gravity="center"
-        android:text="Munnar"
-        android:textAllCaps="true"
-        android:textColor="#FFFFFF"
-        android:textSize="50sp"
-        android:textStyle="bold" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/top_picks"
+                android:layout_marginTop="-30dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:id="@+id/wayanad_pic"
+                android:src="@drawable/wayanad" />
 
-         <TextView
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/top_picks"
+                android:layout_marginTop="-30dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:id="@+id/vagamon_pic"
+                android:src="@drawable/vagamon" />
+
+            </ViewFlipper>
+
+        </RelativeLayout>
+
+
+
+
+            <TextView
              android:id="@+id/most_searched_places"
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
-             android:layout_below="@id/munnar_pic"
+             android:layout_below="@id/view_flipper_relative"
              android:layout_marginTop="-28dp"
              android:paddingLeft="10dp"
              android:paddingTop="1dp"
@@ -130,10 +147,10 @@
 
     </ScrollView>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true" >
+      <RelativeLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_alignParentBottom="true">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -143,14 +160,21 @@
             android:layout_alignParentBottom="true"
             android:scaleType="fitXY" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/linear_layout_icons">
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:id="@+id/location_icon"
             android:src="@drawable/locationicon"
+            android:paddingLeft="30dp"
             android:paddingBottom="35dp"
-            android:paddingLeft="20dp" />
+            android:paddingRight="40dp"/>
 
          <ImageView
              android:layout_width="wrap_content"
@@ -158,8 +182,8 @@
              android:layout_alignParentBottom="true"
              android:id="@+id/search_icon"
              android:src="@drawable/searchicon"
-             android:paddingLeft="140dp"
-             android:paddingBottom="35dp" />
+             android:paddingLeft="40dp"
+             android:paddingRight="40dp"/>
 
           <ImageView
               android:layout_width="wrap_content"
@@ -167,8 +191,8 @@
               android:layout_alignParentBottom="true"
               android:id="@+id/notification_icon"
               android:src="@drawable/notificationicon"
-              android:paddingLeft="260dp"
-              android:paddingBottom="35dp" />
+              android:paddingLeft="40dp"
+              android:paddingRight="40dp"/>
 
           <ImageView
               android:layout_width="wrap_content"
@@ -176,41 +200,55 @@
               android:layout_alignParentBottom="true"
               android:id="@+id/user_icon"
               android:src="@drawable/usericon"
-              android:paddingLeft="370dp"
-              android:paddingBottom="35dp" />
+              android:paddingLeft="20dp"
+              android:paddingRight="10dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        tools:ignore="UnknownId">
 
           <TextView
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:layout_alignParentBottom="true"
               android:text="Location"
-              android:paddingBottom="15dp"
-              android:paddingLeft="10dp" />
-+
+              android:paddingLeft="20dp"
+              android:paddingRight="20dp"
+              android:paddingBottom="15dp"/>
+
           <TextView
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:layout_alignParentBottom="true"
               android:text="Search"
-              android:paddingBottom="15dp"
-              android:paddingLeft="130dp" />
+              android:paddingLeft="20dp"
+              android:paddingRight="20dp"
+              android:paddingBottom="15dp"/>
 
           <TextView
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:layout_alignParentBottom="true"
              android:text="Notification"
-             android:paddingBottom="15dp"
-             android:paddingLeft="240dp"/>
+              android:paddingLeft="20dp"
+              android:paddingRight="20dp"
+              android:paddingBottom="15dp"/>
 
            <TextView
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:layout_alignParentBottom="true"
              android:text="User"
-             android:paddingBottom="15dp"
-             android:paddingLeft="365dp" />
+               android:paddingLeft="20dp"
+               android:paddingRight="20dp"
+               android:paddingBottom="15dp"/>
+    </LinearLayout>
+      </RelativeLayout>
 
-    </RelativeLayout>
+</RelativeLayout>
 
-    </RelativeLayout>
