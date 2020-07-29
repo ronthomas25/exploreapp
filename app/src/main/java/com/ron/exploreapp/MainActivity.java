@@ -4,13 +4,33 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
     RecyclerView rest_recyclerview,mostsearched_recyclerview ;
     int most_searched[]={R.drawable.kochi,R.drawable.alp,R.drawable.kumarakom,R.drawable.kovalam,R.drawable.varkala};
-    int rest_images[]= {R.drawable.paragonlogo,R.drawable.thakkaram};
+    int rest_images[]= {R.drawable.paragonlogo,R.drawable.thakkaram,R.drawable.koconew,R.drawable.chayakkada1};
+
+    public void onClickMunnar(View view){
+        Intent i = new Intent(MainActivity.this,munnaractivity.class);
+        startActivity(i);
+        setContentView(R.layout.activity_munnar);
+    }
+
+    public void onClickWayanad(View view){
+        Intent i = new Intent(getApplicationContext(),wayanadactivity.class);
+        startActivity(i);
+        setContentView(R.layout.activity_wayanad);
+    }
+
+    public void onClickVagamon(View view){
+        Intent i = new Intent(getApplicationContext(),vagamonactivity.class);
+        startActivity(i);
+        setContentView(R.layout.activity_vagamon);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,4 +50,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+
 }

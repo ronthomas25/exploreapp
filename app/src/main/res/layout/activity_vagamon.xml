@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".vagamonactivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="-90dp"
+            android:src="@drawable/vagamoninner" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/backbutton"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:onClick="onClickBackVagamon" />
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/descrectangle"
+                android:paddingTop="150dp" />
+
+
+            <TextView
+                android:id="@+id/vagamon_text_inner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="200dp"
+                android:paddingLeft="20dp"
+                android:text="Vagamon"
+                android:textColor="#000000"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/vagamon_quote"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/vagamon_text_inner"
+                android:layout_marginTop="6dp"
+                android:paddingLeft="20dp"
+                android:text="Solitude Guaranteed"
+                android:textColor="#000000"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/vagamon_quote"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+               android:text="There is an enchanting hill station called Vagamon which is hidden from all the hoopla and surprisingly is one of the best places to visit in Kerala. Adorned with magical meadows, mystical gardens, beautiful dales, aromatic tea plantations, and misty valleys, Vagamon hills has surely earned its place among the best tourist places in Kerala. The fresh air and perfectly manicured gardens of Vagamon are a breath of fresh air."
+                android:textSize="20sp"
+                tools:ignore="UnknownId" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
