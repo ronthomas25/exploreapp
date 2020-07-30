@@ -177,7 +177,8 @@
             android:layout_alignParentBottom="true"
             android:id="@+id/location_icon"
             android:src="@drawable/locationicon"
-            android:paddingLeft="30dp"
+            android:layout_weight="1"
+           android:layout_marginLeft="20dp"
             android:paddingBottom="35dp"
             android:paddingRight="40dp"/>
 
@@ -187,6 +188,7 @@
              android:layout_alignParentBottom="true"
              android:id="@+id/search_icon"
              android:src="@drawable/searchicon"
+             android:layout_weight="1"
              android:paddingLeft="40dp"
              android:paddingRight="40dp"/>
 
@@ -196,6 +198,7 @@
               android:layout_alignParentBottom="true"
               android:id="@+id/notification_icon"
               android:src="@drawable/notificationicon"
+              android:layout_weight="1"
               android:paddingLeft="40dp"
               android:paddingRight="40dp"/>
 
@@ -205,8 +208,9 @@
               android:layout_alignParentBottom="true"
               android:id="@+id/user_icon"
               android:src="@drawable/usericon"
+              android:layout_weight="1"
               android:paddingLeft="40dp"
-              android:paddingRight="10dp"/>
+              android:layout_marginRight="20dp" />
 
     </LinearLayout>
 
@@ -222,7 +226,8 @@
               android:layout_height="wrap_content"
               android:layout_alignParentBottom="true"
               android:text="Location"
-              android:paddingLeft="20dp"
+              android:layout_weight="1"
+              android:layout_marginLeft="10dp"
               android:paddingRight="20dp"
               android:paddingBottom="15dp"/>
 
@@ -231,6 +236,7 @@
               android:layout_height="wrap_content"
               android:layout_alignParentBottom="true"
               android:text="Search"
+              android:layout_weight="1"
               android:paddingLeft="20dp"
               android:paddingRight="20dp"
               android:paddingBottom="15dp"/>
@@ -240,6 +246,7 @@
              android:layout_height="wrap_content"
              android:layout_alignParentBottom="true"
              android:text="Notification"
+              android:layout_weight="1"
               android:paddingLeft="20dp"
               android:paddingRight="20dp"
               android:paddingBottom="15dp"/>
@@ -249,8 +256,9 @@
              android:layout_height="wrap_content"
              android:layout_alignParentBottom="true"
              android:text="User"
+               android:layout_weight="1"
                android:paddingLeft="20dp"
-               android:paddingRight="20dp"
+              android:layout_marginRight="10dp"
                android:paddingBottom="15dp"/>
     </LinearLayout>
       </RelativeLayout>
