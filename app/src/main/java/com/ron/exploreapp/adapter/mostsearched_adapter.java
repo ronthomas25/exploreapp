@@ -1,7 +1,6 @@
-package com.ron.exploreapp;
+package com.ron.exploreapp.adapter;
 
 import android.content.Context;
-import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,13 +9,18 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.ron.exploreapp.R;
+import com.ron.exploreapp.model_data.mostsearched_data;
+
+import java.util.List;
+
 public class mostsearched_adapter extends RecyclerView.Adapter<mostsearched_adapter.mostsearched_viewholder> {
     Context context;
-    int image[];
-    public mostsearched_adapter(Context context,int image[])
+    List<mostsearched_data> mostsearchedDataList;
+    public mostsearched_adapter(Context context, List<mostsearched_data> mostsearchedDataList)
     {
         this.context=context;
-        this.image=image;
+        this.mostsearchedDataList=mostsearchedDataList;
     }
     @NonNull
     @Override
@@ -27,12 +31,12 @@ public class mostsearched_adapter extends RecyclerView.Adapter<mostsearched_adap
 
     @Override
     public void onBindViewHolder(@NonNull mostsearched_viewholder holder, int position) {
-        holder.img.setImageResource(image[position]);
+        holder.img.setImageResource(mostsearchedDataList.get(position).getImg());
     }
 
     @Override
     public int getItemCount() {
-        return image.length;
+        return mostsearchedDataList.size();
     }
 
     public class mostsearched_viewholder extends RecyclerView.ViewHolder {
