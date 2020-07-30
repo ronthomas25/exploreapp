@@ -205,7 +205,7 @@
               android:layout_alignParentBottom="true"
               android:id="@+id/user_icon"
               android:src="@drawable/usericon"
-              android:paddingLeft="20dp"
+              android:paddingLeft="40dp"
               android:paddingRight="10dp"/>
 
     </LinearLayout>
