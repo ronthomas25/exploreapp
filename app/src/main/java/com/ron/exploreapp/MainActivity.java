@@ -18,6 +18,11 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     RecyclerView rest_recyclerview,mostsearched_recyclerview ;
+    int[] kochi_img={R.drawable.kochi, R.drawable.kochi2};
+    int alp_img[]={R.drawable.alp,R.drawable.alp2};
+    int kumarakom_img[]={R.drawable.kumarakom,R.drawable.kumarakom2};
+    int kovalam_img[]={R.drawable.kovalam,R.drawable.kovalam2};
+    int varkala_img[]={R.drawable.varkala,R.drawable.varkala2};
 
       public void onClickMunnar(View view){
         Intent i = new Intent(MainActivity.this,munnaractivity.class);
@@ -43,11 +48,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         List<mostsearched_data> mostsearchedDataList=new ArrayList<>();
-        mostsearchedDataList.add(new mostsearched_data(R.drawable.kochi,"Kochi"));
-        mostsearchedDataList.add(new mostsearched_data(R.drawable.alp,"Alappuzha"));
-        mostsearchedDataList.add(new mostsearched_data(R.drawable.kumarakom,"Kumarakom"));
-        mostsearchedDataList.add(new mostsearched_data(R.drawable.kovalam,"Kovalam"));
-        mostsearchedDataList.add(new mostsearched_data(R.drawable.varkala,"Varkala"));
+        mostsearchedDataList.add(new mostsearched_data(kochi_img,"Kochi",getString(R.string.kochi_desc)));
+        mostsearchedDataList.add(new mostsearched_data(alp_img,"Alappuzha",getString(R.string.alp_desc)));
+        mostsearchedDataList.add(new mostsearched_data(kumarakom_img,"Kumarakom",getString(R.string.kumarakom_desc)));
+        mostsearchedDataList.add(new mostsearched_data(kovalam_img,"Kovalam",getString(R.string.kovalam_desc)));
+        mostsearchedDataList.add(new mostsearched_data(varkala_img,"Varkala",getString(R.string.varkala_desc)));
         mostsearched_recycler(mostsearchedDataList);
 
         List<restaurent_data> restaurentDataList=new ArrayList<>();

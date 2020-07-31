@@ -1,6 +1,8 @@
 package com.ron.exploreapp.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +13,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.ron.exploreapp.R;
 import com.ron.exploreapp.model_data.mostsearched_data;
+import com.ron.exploreapp.mostsearched_activity;
 
+import java.io.Serializable;
 import java.util.List;
 
 public class mostsearched_adapter extends RecyclerView.Adapter<mostsearched_adapter.mostsearched_viewholder> {
@@ -30,8 +34,19 @@ public class mostsearched_adapter extends RecyclerView.Adapter<mostsearched_adap
     }
 
     @Override
-    public void onBindViewHolder(@NonNull mostsearched_viewholder holder, int position) {
-        holder.img.setImageResource(mostsearchedDataList.get(position).getImg());
+    public void onBindViewHolder(@NonNull mostsearched_viewholder holder, final int position) {
+        holder.img.setImageResource(mostsearchedDataList.get(position).getImg(0));
+        holder.img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(context, mostsearched_activity.class);
+                Bundle bundle=new Bundle();
+                bundle.putSerializable("data", (Serializable) mostsearchedDataList);
+                intent.putExtras(bundle);
+                intent.putExtra("pos",position);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override

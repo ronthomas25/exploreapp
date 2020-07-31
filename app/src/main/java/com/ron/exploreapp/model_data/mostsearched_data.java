@@ -1,20 +1,27 @@
 package com.ron.exploreapp.model_data;
+import java.io.Serializable;
 
-public class mostsearched_data {
-    int img;
+public class mostsearched_data implements Serializable {
+    int img[];
     String placename;
+    String desc;
 
-    public mostsearched_data(int img, String placename) {
+    public mostsearched_data(int[] img, String placename, String desc) {
         this.img = img;
         this.placename = placename;
+        this.desc = desc;
     }
 
-    public int getImg() {
-        return img;
+    public String getDesc() {
+        return desc;
     }
 
-    public void setImg(int img) {
-        this.img = img;
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
+
+    public int getImg(int i) {
+        return img[i];
     }
 
     public String getPlacename() {
