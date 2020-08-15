@@ -1,37 +1,66 @@
 package com.ron.exploreapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.google.android.material.appbar.CollapsingToolbarLayout;
+import com.google.android.material.tabs.TabLayout;
+import com.ron.exploreapp.adapter.frag_mostsrc_adapter;
 import com.ron.exploreapp.model_data.mostsearched_data;
 
 import java.util.List;
 
 public class mostsearched_activity extends AppCompatActivity {
-    TextView place,desc;
+    String desc,uri;
+    TextView rating,state;
     int pos;
-    ImageView img,backbtn;
+    float lat,lon;
+    ImageView img,backbtn,gps;
+    RatingBar ratingBar;
+    TabLayout tabLayout;
+    ViewPager viewPager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mostsearched_activity);
-        place=findViewById(R.id.placename);
-        desc=findViewById(R.id.placedesc);
+
         img=findViewById(R.id.placeimg);
-        backbtn=findViewById(R.id.back_button);
+        state=findViewById(R.id.state);
+        backbtn=findViewById(R.id.backbtn);
+        ratingBar=findViewById(R.id.ratingBar);
+        rating=findViewById(R.id.rating);
+        gps=findViewById(R.id.gps_icon);
+        CollapsingToolbarLayout collapsingToolbarLayout=findViewById(R.id.collapsinglayout);
 
         Bundle bundle= getIntent().getExtras();
         List<mostsearched_data> mostsearchedData=(List<mostsearched_data>)bundle.getSerializable("data");
-
         pos=getIntent().getIntExtra("pos",0);
-        place.setText(mostsearchedData.get(pos).getPlacename());
-        desc.setText(mostsearchedData.get(pos).getDesc());
+
+        collapsingToolbarLayout.setTitle(mostsearchedData.get(pos).getPlacename());
         img.setImageResource(mostsearchedData.get(pos).getImg(1));
+        desc=mostsearchedData.get(pos).getDesc();
+        state.setText(mostsearchedData.get(pos).getState());
+        ratingBar.setRating(mostsearchedData.get(pos).getRating());
+        rating.setText(mostsearchedData.get(pos).getRating()+"");
+        lat=mostsearchedData.get(pos).getLat();
+        lon=mostsearchedData.get(pos).getLon();
+        uri="geo:"+lat+","+lon+"?q="+lat+","+lon+"";
+        fragadapter(desc);
+        gps.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+                startActivity(i);
+            }
+        });
 
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,7 +71,30 @@ public class mostsearched_activity extends AppCompatActivity {
         });
 
 
+    }
+    public void fragadapter(String desc)
+    {
+        tabLayout=findViewById(R.id.tablayout);
+        viewPager=findViewById(R.id.viewpager);
+        frag_mostsrc_adapter fragMostsrcAdapter=new frag_mostsrc_adapter(getSupportFragmentManager(), tabLayout.getTabCount(),desc);
+        viewPager.setAdapter(fragMostsrcAdapter);
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+            }
 
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
     }
 }

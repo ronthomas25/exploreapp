@@ -5,11 +5,52 @@ public class mostsearched_data implements Serializable {
     int img[];
     String placename;
     String desc;
+    float rating;
+    float lat,lon;
+    String state;
 
-    public mostsearched_data(int[] img, String placename, String desc) {
+    public mostsearched_data(int[] img, String placename, String desc, double rating, double lat, double lon, String state) {
         this.img = img;
         this.placename = placename;
         this.desc = desc;
+        this.rating = (float) rating;
+        this.lat = (float) lat;
+        this.lon = (float) lon;
+        this.state = state;
+
+    }
+
+    public float getLat() {
+        return lat;
+    }
+
+    public void setLat(float lat) {
+        this.lat = lat;
+    }
+
+    public float getLon() {
+        return lon;
+    }
+
+    public void setLon(float lon) {
+        this.lon = lon;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+
+    public float getRating() {
+        return rating;
+    }
+
+    public void setRating(float rating) {
+        this.rating = rating;
     }
 
     public String getDesc() {

@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:weightSum="100"
     tools:context=".MainActivity"
@@ -19,7 +20,7 @@
          android:layout_width="match_parent"
          android:layout_height="match_parent" >
 
-    <ImageView
+     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/background_image"
@@ -50,67 +51,39 @@
         android:layout_below="@id/discover"
         tools:ignore="InvalidId" />
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/view_flipper_relative"
-            android:layout_below="@id/top_picks">
+            android:id="@+id/linearlayout"
+            android:layout_below="@id/top_picks"
+            android:orientation="vertical">
 
-            <ViewFlipper
+            <com.denzcoskun.imageslider.ImageSlider
+                android:id="@+id/slider"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:autoStart="true"
-                android:flipInterval="2000">
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/top_picks"
-        android:layout_marginTop="-30dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:id="@+id/munnar_pic"
-        android:src="@drawable/munnar"
-        android:onClick="onClickMunnar"/>
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/top_picks"
-                android:layout_marginTop="-30dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:id="@+id/wayanad_pic"
-                android:src="@drawable/wayanad"
-                android:onClick="onClickWayanad"/>
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/top_picks"
-                android:layout_marginTop="-30dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:id="@+id/vagamon_pic"
-                android:src="@drawable/vagamon"
-                android:onClick="onClickVagamon"/>
-
-            </ViewFlipper>
-
-        </RelativeLayout>
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="3dp"
+                android:layout_height="215dp"
+                app:auto_cycle="true"
+                app:corner_radius="20"
+                app:delay="0"
+                app:period="1000">
+            </com.denzcoskun.imageslider.ImageSlider>
 
 
+        </LinearLayout>
 
 
             <TextView
              android:id="@+id/most_searched_places"
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
-             android:layout_below="@id/view_flipper_relative"
-             android:layout_marginTop="-28dp"
-                android:layout_marginLeft="10dp"
+             android:layout_below="@+id/linearlayout"
+             android:layout_marginLeft="10dp"
              android:paddingTop="1dp"
              android:text="Most searched places"
+             android:layout_marginTop="10dp"
              android:textColor="#030303"
              android:textSize="17sp"/>
 
@@ -144,7 +117,7 @@
              android:layout_below="@+id/most_searched_places"
              android:paddingLeft="10dp"
              android:paddingRight="10dp"
-             android:layout_marginTop="6dp" />
+             android:layout_marginTop="1dp" />
 
 
      </RelativeLayout>
