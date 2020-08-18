@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".toppicks_activity"></activity>
+        <activity android:name=".NotificationActivity"></activity>
+        <activity android:name=".SearchActivity" />
+        <activity android:name=".rest_activity" />
+        <activity android:name=".toppicks_activity" />
         <activity android:name=".mostsearched_activity" />
         <activity
             android:name=".MainActivity"

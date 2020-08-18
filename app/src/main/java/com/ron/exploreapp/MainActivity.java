@@ -1,11 +1,13 @@
 package com.ron.exploreapp;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.Intent;
-import android.os.Bundle;
 
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.interfaces.ItemClickListener;
@@ -20,23 +22,30 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
-    RecyclerView rest_recyclerview,mostsearched_recyclerview ;
-    int munnar_img[]={R.drawable.munnar,R.drawable.munnarinner};
-    int wayanad_img[]={R.drawable.wayanad, R.drawable.wayanadinner};
-    int vagamon_img[]={R.drawable.vagamon,R.drawable.vagamoninner};
-    int kochi_img[]={R.drawable.kochi, R.drawable.kochi2};
-    int alp_img[]={R.drawable.alp,R.drawable.alp2};
-    int kumarakom_img[]={R.drawable.kumarakom,R.drawable.kumarakom2};
-    int kovalam_img[]={R.drawable.kovalam,R.drawable.kovalam2};
-    int varkala_img[]={R.drawable.varkala,R.drawable.varkala2};
+public class MainActivity extends BaseActivity{
+    RecyclerView rest_recyclerview, mostsearched_recyclerview;
+    int munnar_img[] = {R.drawable.munnar, R.drawable.munnarinner};
+    int wayanad_img[] = {R.drawable.wayanad, R.drawable.wayanadinner};
+    int vagamon_img[] = {R.drawable.vagamon, R.drawable.vagamoninner};
+    int kochi_img[] = {R.drawable.kochi, R.drawable.kochi2};
+    int alp_img[] = {R.drawable.alp, R.drawable.alp2};
+    int kumarakom_img[] = {R.drawable.kumarakom, R.drawable.kumarakom2};
+    int kovalam_img[] = {R.drawable.kovalam, R.drawable.kovalam2};
+    int varkala_img[] = {R.drawable.varkala, R.drawable.varkala2};
+    int paragon_img[] = {R.drawable.paragonlogo, R.drawable.paragonlogo};
+    int thakkaram_img[] = {R.drawable.thakkaram, R.drawable.thakkaram};
+    int koco_img[] = {R.drawable.koco, R.drawable.koco};
+    int chayakkada_img[] = {R.drawable.chayakkada1, R.drawable.chayakkada1};
+
+
 
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+
+
 
         List<SlideModel> slideModels=new ArrayList<>();
         ImageSlider imageSlider=findViewById(R.id.slider);
@@ -60,13 +69,24 @@ public class MainActivity extends AppCompatActivity {
         mostsearched_recycler(mostsearchedDataList);
 
         List<restaurent_data> restaurentDataList=new ArrayList<>();
-        restaurentDataList.add(new restaurent_data(R.drawable.paragonlogo,"Paragon"));
-        restaurentDataList.add(new restaurent_data(R.drawable.thakkaram,"Thakkaram"));
-        restaurentDataList.add(new restaurent_data(R.drawable.koco,"Ko.co"));
-        restaurentDataList.add(new restaurent_data(R.drawable.chayakkada1,"Aadhaminte Chayakada"));
+        restaurentDataList.add(new restaurent_data(paragon_img,"Paragon","Adorned",4,9.9312,76.2673,"Kerala,India"));
+        restaurentDataList.add(new restaurent_data(thakkaram_img,"Thakkaram","Adorned",4,9.9312,76.2673,"Kerala,India"));
+        restaurentDataList.add(new restaurent_data(koco_img,"Ko.co","Adorned",4,9.9312,76.2673,"Kerala,India"));
+        restaurentDataList.add(new restaurent_data(chayakkada_img,"Aadhaminte Chayakada","Adorned",4,9.9312,76.2673,"Kerala,India"));
         restaurent_recycler(restaurentDataList);
 
       }
+
+    @Override
+    int getLayoutId() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    int getBottomNavigationMenuItemId() {
+        return R.id.action_main;
+    }
+
     private void mostsearched_recycler(List<mostsearched_data> mostsearchedDataList)
     {
         mostsearched_recyclerview=findViewById(R.id.most_searched_recycler);
@@ -115,4 +135,6 @@ public class MainActivity extends AppCompatActivity {
 
 
    }
+
+
 }

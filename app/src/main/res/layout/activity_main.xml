@@ -125,116 +125,17 @@
 
     </ScrollView>
 
-      <RelativeLayout
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_alignParentBottom="true">
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/icon_bar"
-            android:src="@drawable/iconbar2"
-            android:layout_alignParentBottom="true"
-            android:scaleType="fitXY" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:id="@+id/linear_layout_icons">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:id="@+id/location_icon"
-            android:src="@drawable/locationicon"
-            android:layout_weight="1"
-           android:layout_marginLeft="20dp"
-            android:paddingBottom="35dp"
-            android:paddingRight="40dp"/>
-
-         <ImageView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_alignParentBottom="true"
-             android:id="@+id/search_icon"
-             android:src="@drawable/searchicon"
-             android:layout_weight="1"
-             android:paddingLeft="40dp"
-             android:paddingRight="40dp"/>
-
-          <ImageView
-              android:layout_width="wrap_content"
+          <include
+              layout="@layout/item_bottom_navigation"
+              android:layout_width="match_parent"
               android:layout_height="wrap_content"
+              android:layout_gravity="bottom"
               android:layout_alignParentBottom="true"
-              android:id="@+id/notification_icon"
-              android:src="@drawable/notificationicon"
-              android:layout_weight="1"
-              android:paddingLeft="40dp"
-              android:paddingRight="40dp"/>
+              app:layout_constraintBottom_toBottomOf="parent" />
 
-          <ImageView
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_alignParentBottom="true"
-              android:id="@+id/user_icon"
-              android:src="@drawable/usericon"
-              android:layout_weight="1"
-              android:paddingLeft="40dp"
-              android:layout_marginRight="20dp" />
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_alignParentBottom="true"
-        tools:ignore="UnknownId">
-
-          <TextView
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_alignParentBottom="true"
-              android:text="Location"
-              android:layout_weight="1"
-              android:layout_marginLeft="10dp"
-              android:paddingRight="20dp"
-              android:paddingBottom="15dp"/>
-
-          <TextView
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_alignParentBottom="true"
-              android:text="Search"
-              android:layout_weight="1"
-              android:paddingLeft="20dp"
-              android:paddingRight="20dp"
-              android:paddingBottom="15dp"/>
-
-          <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_alignParentBottom="true"
-             android:text="Notification"
-              android:layout_weight="1"
-              android:paddingLeft="20dp"
-              android:paddingRight="20dp"
-              android:paddingBottom="15dp"/>
-
-           <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_alignParentBottom="true"
-             android:text="User"
-               android:layout_weight="1"
-               android:paddingLeft="20dp"
-              android:layout_marginRight="10dp"
-               android:paddingBottom="15dp"/>
-    </LinearLayout>
-      </RelativeLayout>
 
 </RelativeLayout>
 
