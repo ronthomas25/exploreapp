@@ -94,6 +94,7 @@
                 android:scaleX="0.4"
                 android:scaleY="0.4"
                 android:progressTint="#D4AF37"
+                android:isIndicator="true"
                 tools:ignore="UnknownId" />
 
             <TextView
