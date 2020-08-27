@@ -97,7 +97,6 @@ public class SearchActivity extends BaseActivity {
         };
        recyclerView.setAdapter(firebaseRecyclerAdapter);
        firebaseRecyclerAdapter.startListening();
-
     }
 
     public class viewholder extends RecyclerView.ViewHolder{
