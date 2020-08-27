@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.ron.exploreapp">
 
     <application
@@ -10,10 +11,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".NotificationActivity"></activity>
-        <activity android:name=".SearchActivity" />
+        <activity android:name=".SearchActivity"
+            android:windowSoftInputMode="adjustNothing"/>
         <activity android:name=".rest_activity" />
         <activity android:name=".toppicks_activity" />
         <activity android:name=".mostsearched_activity" />
+
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait">
