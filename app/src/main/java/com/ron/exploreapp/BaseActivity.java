@@ -53,6 +53,12 @@ public abstract class BaseActivity extends AppCompatActivity implements BottomNa
 
                 }
 
+                else if (itemId == R.id.action_account) {
+                    BaseActivity.this.startActivity(new Intent(BaseActivity.this, AccountActivity.class));
+
+                }
+
+
                 BaseActivity.this.finish();
             }
         }, 300);

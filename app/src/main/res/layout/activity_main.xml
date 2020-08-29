@@ -65,6 +65,8 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginTop="3dp"
                 android:layout_height="215dp"
+                app:placeholder="@drawable/backimgtoppicks"
+                app:error_image="@drawable/backimgtoppicks"
                 app:auto_cycle="true"
                 app:corner_radius="20"
                 app:delay="0"

@@ -10,15 +10,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".NotificationActivity"></activity>
-        <activity android:name=".SearchActivity"
-            android:windowSoftInputMode="adjustNothing"/>
+        <activity android:name=".AccountActivity"></activity>
+        <activity android:name=".LogInActivity" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".NotificationActivity" />
+        <activity
+            android:name=".SearchActivity"
+            android:windowSoftInputMode="adjustNothing" />
         <activity android:name=".rest_activity" />
         <activity android:name=".toppicks_activity" />
         <activity android:name=".mostsearched_activity" />
-
         <activity
-            android:name=".MainActivity"
+            android:name=".SignUpActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
