@@ -15,12 +15,9 @@ import com.bumptech.glide.Glide;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.tabs.TabLayout;
 import com.ron.exploreapp.adapter.frag_rest_adapter;
-import com.ron.exploreapp.model_data.pop_restaurent_data;
 
-import java.util.List;
-
-public class rest_activity extends AppCompatActivity {
-    String desc,uri;
+public class rest_firebase_activity extends AppCompatActivity {
+    String desc,uri,url;
     TextView rating,state;
     int pos;
     float lat,lon;
@@ -32,7 +29,8 @@ public class rest_activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_rest_activity);
+        setContentView(R.layout.activity_rest_firebase_activity);
+
         img=findViewById(R.id.placeimg);
         state=findViewById(R.id.state);
         backbtn=findViewById(R.id.backbtn);
@@ -41,18 +39,19 @@ public class rest_activity extends AppCompatActivity {
         gps=findViewById(R.id.gps_icon);
         CollapsingToolbarLayout collapsingToolbarLayout=findViewById(R.id.collapsinglayout);
 
-        Bundle bundle= getIntent().getExtras();
-        List<pop_restaurent_data> restaurentData=(List<pop_restaurent_data>)bundle.getSerializable("data");
-        pos=getIntent().getIntExtra("pos",0);
+      /*  Bundle bundle= getIntent().getExtras();
+        List<sample_firebasedata> restaurentData=(List<sample_firebasedata>)bundle.getSerializable("data");
+        pos=getIntent().getIntExtra("pos",0);*/
 
-        collapsingToolbarLayout.setTitle(restaurentData.get(pos).getPlacename());
-        Glide.with(getApplicationContext()).load(restaurentData.get(pos).getImg()).into(img);
-        desc=restaurentData.get(pos).getDesc();
-        state.setText(restaurentData.get(pos).getState());
-        ratingBar.setRating(restaurentData.get(pos).getRating());
-        rating.setText(restaurentData.get(pos).getRating()+"");
-        lat=restaurentData.get(pos).getLat();
-        lon=restaurentData.get(pos).getLon();
+        Intent i=getIntent();
+        collapsingToolbarLayout.setTitle(i.getStringExtra("place"));
+        Glide.with(getApplicationContext()).load(i.getStringExtra("image")).into(img);
+        desc=i.getStringExtra("desc");
+        state.setText(i.getStringExtra("state"));
+        ratingBar.setRating(i.getFloatExtra("rating",0));
+        rating.setText(i.getFloatExtra("rating",0)+"");
+        lat=i.getFloatExtra("lat",0);
+        lon=i.getFloatExtra("lon",0);
         uri="geo:"+lat+","+lon+"?q="+lat+","+lon+"";
         fragadapter(desc);
         gps.setOnClickListener(new View.OnClickListener() {
@@ -66,7 +65,7 @@ public class rest_activity extends AppCompatActivity {
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(rest_activity.this,MainActivity.class);
+                Intent i = new Intent(rest_firebase_activity.this,SearchActivity.class);
                 startActivity(i);
             }
         });
@@ -77,6 +76,7 @@ public class rest_activity extends AppCompatActivity {
     {
         tabLayout=findViewById(R.id.tablayout);
         viewPager=findViewById(R.id.viewpager);
+
         frag_rest_adapter fragRestAdapter=new frag_rest_adapter(getSupportFragmentManager(), tabLayout.getTabCount(),desc);
         viewPager.setAdapter(fragRestAdapter);
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -99,4 +99,7 @@ public class rest_activity extends AppCompatActivity {
 
 
     }
+
+
+
 }

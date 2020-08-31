@@ -11,8 +11,10 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.ron.exploreapp.R;
-import com.ron.exploreapp.model_data.restaurent_data;
+import com.ron.exploreapp.model_data.pop_restaurent_data;
 import com.ron.exploreapp.rest_activity;
 
 import java.io.Serializable;
@@ -20,8 +22,8 @@ import java.util.List;
 
 public class rest_adapter extends RecyclerView.Adapter<rest_adapter.rest_viewholder> {
     Context context;
-    List<restaurent_data> restaurentDataList;
-    public rest_adapter(Context context, List<restaurent_data> restaurentDataList)
+    List<pop_restaurent_data> restaurentDataList;
+    public rest_adapter(Context context, List<pop_restaurent_data> restaurentDataList)
     {
         this.context=context;
         this.restaurentDataList=restaurentDataList;
@@ -36,7 +38,7 @@ public class rest_adapter extends RecyclerView.Adapter<rest_adapter.rest_viewhol
 
     @Override
     public void onBindViewHolder(@NonNull rest_viewholder holder, final int position) {
-        holder.rest_image.setImageResource(restaurentDataList.get(position).getImg(0));
+        Glide.with(context).load(restaurentDataList.get(position).getImg()).dontTransform().diskCacheStrategy(DiskCacheStrategy.ALL).into(holder.rest_image);
         holder.rest_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

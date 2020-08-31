@@ -37,6 +37,7 @@ public class AccountActivity extends BaseActivity {
                 FirebaseAuth.getInstance().signOut();
                 Intent intToMain = new Intent(AccountActivity.this, SignUpActivity.class);
                 startActivity(intToMain);
+                finish();
             }
         });
     }

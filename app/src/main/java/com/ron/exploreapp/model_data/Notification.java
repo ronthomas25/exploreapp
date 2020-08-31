@@ -1,4 +1,4 @@
-package com.ron.exploreapp;
+package com.ron.exploreapp.model_data;
 
 public class Notification {
     private String title;

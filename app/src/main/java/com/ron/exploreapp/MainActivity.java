@@ -2,21 +2,27 @@ package com.ron.exploreapp;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ImageView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.interfaces.ItemClickListener;
 import com.denzcoskun.imageslider.models.SlideModel;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.ron.exploreapp.adapter.mostsearched_adapter;
 import com.ron.exploreapp.adapter.rest_adapter;
 import com.ron.exploreapp.model_data.mostsearched_data;
-import com.ron.exploreapp.model_data.restaurent_data;
+import com.ron.exploreapp.model_data.pop_restaurent_data;
+import com.ron.exploreapp.model_data.rest_firebasedata;
 import com.ron.exploreapp.model_data.top_picks_data;
 
 import java.io.Serializable;
@@ -38,6 +44,8 @@ public class MainActivity extends BaseActivity{
     int koco_img[] = {R.drawable.koco, R.drawable.koco};
     int chayakkada_img[] = {R.drawable.chayakkada1, R.drawable.chayakkada1};
 
+    DatabaseReference databaseReference;
+
 
 
 
@@ -45,8 +53,6 @@ public class MainActivity extends BaseActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Toast.makeText(MainActivity.this,"FireBase Connection Success",Toast.LENGTH_LONG).show();
-
 
 
         List<SlideModel> slideModels=new ArrayList<>();
@@ -70,12 +76,30 @@ public class MainActivity extends BaseActivity{
         mostsearchedDataList.add(new mostsearched_data(varkala_img,"Varkala",getString(R.string.varkala_desc),4.3,9.9312,76.2673,"kerala,India"));
         mostsearched_recycler(mostsearchedDataList);
 
-        List<restaurent_data> restaurentDataList=new ArrayList<>();
+       /* List<restaurent_data> restaurentDataList=new ArrayList<>();
         restaurentDataList.add(new restaurent_data(paragon_img,"Paragon","Adorned",4,9.9312,76.2673,"Kerala,India"));
         restaurentDataList.add(new restaurent_data(thakkaram_img,"Thakkaram","Adorned",4,9.9312,76.2673,"Kerala,India"));
         restaurentDataList.add(new restaurent_data(koco_img,"Ko.co","Adorned",4,9.9312,76.2673,"Kerala,India"));
-        restaurentDataList.add(new restaurent_data(chayakkada_img,"Aadhaminte Chayakada","Adorned",4,9.9312,76.2673,"Kerala,India"));
-        restaurent_recycler(restaurentDataList);
+        restaurentDataList.add(new restaurent_data(chayakkada_img,"Aadhaminte Chayakada","Adorned",4,9.9312,76.2673,"Kerala,India"));*/
+        databaseReference=FirebaseDatabase.getInstance().getReference().child("restaurent");
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                List<pop_restaurent_data> restaurentDataList=new ArrayList<>();
+                for(DataSnapshot data:snapshot.getChildren()){
+                    rest_firebasedata modeldata=data.getValue(rest_firebasedata.class);
+                    restaurentDataList.add(new pop_restaurent_data(modeldata.getImage(),modeldata.getPlace(),modeldata.getDesc(),modeldata.getRating(),modeldata.getLat(),modeldata.getLon(),modeldata.getState()));
+                }
+                restaurent_recycler(restaurentDataList);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
 
       }
 
@@ -97,7 +121,7 @@ public class MainActivity extends BaseActivity{
         mostsearched_recyclerview.setLayoutManager(new LinearLayoutManager(this,mostsearched_recyclerview.HORIZONTAL,false));
     }
 
-   private void restaurent_recycler(List<restaurent_data> restaurentDataList)
+   private void restaurent_recycler(List<pop_restaurent_data> restaurentDataList)
    {
        rest_recyclerview=findViewById(R.id.restrecycler);
        rest_adapter rest_adapter=new rest_adapter(this,restaurentDataList);

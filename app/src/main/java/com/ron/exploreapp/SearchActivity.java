@@ -1,5 +1,6 @@
 package com.ron.exploreapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -82,9 +83,23 @@ public class SearchActivity extends BaseActivity {
        options=new FirebaseRecyclerOptions.Builder<rest_firebasedata>().setQuery(query,rest_firebasedata.class).build();
        firebaseRecyclerAdapter=new FirebaseRecyclerAdapter<rest_firebasedata,viewholder>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull viewholder holder, int position, @NonNull rest_firebasedata model) {
+            protected void onBindViewHolder(@NonNull viewholder holder, int position, @NonNull final rest_firebasedata model) {
                 Glide.with(getApplicationContext()).load(model.getImage()).into(holder.image);
-                holder.name.setText(model.getPlace());
+                holder.place.setText(model.getPlace());
+                holder.image.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                     Intent i=new Intent(SearchActivity.this,rest_firebase_activity.class);
+                     i.putExtra("desc",model.getDesc());
+                     i.putExtra("place",model.getPlace());
+                     i.putExtra("image",model.getImage());
+                     i.putExtra("lat",model.getLat());
+                     i.putExtra("lon",model.getLon());
+                     i.putExtra("rating",model.getRating());
+                     i.putExtra("state",model.getState());
+                     startActivity(i);
+                    }
+                });
 
             }
 
@@ -102,11 +117,11 @@ public class SearchActivity extends BaseActivity {
     public class viewholder extends RecyclerView.ViewHolder{
 
         ImageView image;
-        TextView name;
+        TextView place;
         public viewholder(@NonNull View itemView) {
             super(itemView);
             image=itemView.findViewById(R.id.dp_image);
-            name=itemView.findViewById(R.id.name);
+            place=itemView.findViewById(R.id.name);
         }
     }
 }

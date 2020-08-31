@@ -2,16 +2,18 @@ package com.ron.exploreapp.model_data;
 
 import java.io.Serializable;
 
-public class restaurent_data implements Serializable {
-    int img[];
+public class pop_restaurent_data implements Serializable {
+    String img;
     String placename;
     String desc;
     float rating;
     float lat,lon;
     String state;
 
+    public pop_restaurent_data(){}
 
-        public restaurent_data(int[] img, String placename, String desc, double rating, double lat, double lon, String state) {
+
+        public pop_restaurent_data(String img, String placename, String desc, double rating, double lat, double lon, String state) {
             this.img = img;
             this.placename = placename;
             this.desc = desc;
@@ -63,8 +65,8 @@ public class restaurent_data implements Serializable {
             this.desc = desc;
         }
 
-        public int getImg(int i) {
-            return img[i];
+        public String getImg() {
+            return img;
         }
 
         public String getPlacename() {

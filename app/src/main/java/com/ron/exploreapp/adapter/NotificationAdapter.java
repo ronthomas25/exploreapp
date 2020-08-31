@@ -1,4 +1,4 @@
-package com.ron.exploreapp;
+package com.ron.exploreapp.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.ron.exploreapp.model_data.Notification;
+import com.ron.exploreapp.R;
 
 
 public class NotificationAdapter extends FirestoreRecyclerAdapter<Notification,NotificationAdapter.NotificationHolder> {
@@ -30,16 +32,11 @@ public class NotificationAdapter extends FirestoreRecyclerAdapter<Notification,N
     @NonNull
     @Override
     public NotificationHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.notification_item,
-                parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.notification_item,parent, false);
         return new NotificationHolder(v);
     }
 
     class NotificationHolder extends RecyclerView.ViewHolder {
-
-
-
-
 
         TextView textViewTitle;
         TextView textViewDescription;

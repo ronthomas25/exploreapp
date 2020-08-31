@@ -15,6 +15,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -22,11 +23,24 @@ public class SignUpActivity extends AppCompatActivity {
         Button btnSignUp;
         TextView tvSignIn;
         FirebaseAuth mFirebaseAuth;
+        FirebaseAuth mfirebaseauth;
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_sign_up);
+            mfirebaseauth=FirebaseAuth.getInstance();
+
+            FirebaseUser user=mfirebaseauth.getCurrentUser();
+            if (user != null) {
+                Intent i=new Intent(this,MainActivity.class);
+                startActivity(i);
+                finish();
+            }
+            else{
+
+            }
+
 
             mFirebaseAuth = FirebaseAuth.getInstance();
             emailId = findViewById(R.id.editText);
@@ -47,7 +61,7 @@ public class SignUpActivity extends AppCompatActivity {
                         password.requestFocus();
                     }
                     else  if(email.isEmpty() && pwd.isEmpty()){
-                        Toast.makeText(SignUpActivity.this,"Fields Are Empty!",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SignUpActivity.this,".Fields Are Empty!",Toast.LENGTH_SHORT).show();
                     }
                     else  if(!(email.isEmpty() && pwd.isEmpty())){
                         mFirebaseAuth.createUserWithEmailAndPassword(email, pwd).addOnCompleteListener(SignUpActivity.this, new OnCompleteListener<AuthResult>() {
@@ -58,6 +72,7 @@ public class SignUpActivity extends AppCompatActivity {
                                 }
                                 else {
                                     startActivity(new Intent(SignUpActivity.this,MainActivity.class));
+                                    finish();
                                 }
                             }
                         });
