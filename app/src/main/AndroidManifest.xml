@@ -10,7 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".rest_firebase_activity"></activity>
+        <activity android:name=".SignUpActivity"></activity>
+        <activity android:name=".rest_firebase_activity" />
         <activity android:name=".AccountActivity" />
         <activity android:name=".LogInActivity" />
         <activity android:name=".MainActivity" />
@@ -22,7 +23,7 @@
         <activity android:name=".toppicks_activity" />
         <activity android:name=".mostsearched_activity" />
         <activity
-            android:name=".SignUpActivity"
+            android:name=".SplashActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

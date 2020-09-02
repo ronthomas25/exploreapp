@@ -2,6 +2,8 @@ package com.ron.exploreapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -28,8 +30,13 @@ import com.ron.exploreapp.model_data.top_picks_data;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MainActivity extends BaseActivity{
+    ProgressBar progressBar;
+    int count = 0;
+    Timer timer;
     RecyclerView rest_recyclerview, mostsearched_recyclerview;
     int munnar_img[] = {R.drawable.munnar, R.drawable.munnarinner};
     int wayanad_img[] = {R.drawable.wayanad, R.drawable.wayanadinner};
@@ -53,6 +60,20 @@ public class MainActivity extends BaseActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        progressBar = findViewById(R.id.progress_bar);
+        timer = new Timer();
+        TimerTask timerTask = new TimerTask() {
+            @Override
+            public void run() {
+                count ++;
+                progressBar.setProgress(count);
+                if(count==100) {
+                    timer.cancel();
+                }
+            }
+        };
+        timer.schedule(timerTask,0,100);
 
 
         List<SlideModel> slideModels=new ArrayList<>();

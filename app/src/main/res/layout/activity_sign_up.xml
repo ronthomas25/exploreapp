@@ -18,11 +18,20 @@
         android:layout_marginTop="152dp"
         android:ems="10"
         android:hint="Email"
+        android:paddingStart="7dp"
+        android:paddingEnd="12dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
         android:inputType="textEmailAddress"
+        android:drawablePadding="12dp"
+        android:drawableStart="@drawable/email_icon"
+        android:background="@drawable/custom_signup"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:drawableLeft="@drawable/email_icon"
+        tools:ignore="RtlCompat" />
 
     <EditText
         android:id="@+id/editText2"
@@ -34,12 +43,21 @@
         android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="Password"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:paddingStart="7dp"
+        android:paddingEnd="12dp"
         android:inputType="textPassword"
+        android:drawablePadding="12dp"
+        android:drawableStart="@drawable/password_icon"
+        android:background="@drawable/custom_signup"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText"
-        app:layout_constraintVertical_bias="0.052" />
+        app:layout_constraintVertical_bias="0.052"
+        android:drawableLeft="@drawable/password_icon"
+        tools:ignore="RtlCompat" />
 
     <TextView
         android:id="@+id/textView"
@@ -62,9 +80,13 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="Sign Up"
+        android:paddingStart="50dp"
+        android:paddingEnd="50dp"
+        android:background="@drawable/custom_button"
         app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+        app:layout_constraintTop_toBottomOf="@+id/editText2"
+        tools:ignore="RtlCompat" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
