@@ -15,7 +15,7 @@ import com.bumptech.glide.Glide;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.tabs.TabLayout;
 import com.ron.exploreapp.adapter.frag_rest_adapter;
-import com.ron.exploreapp.model_data.pop_restaurent_data;
+import com.ron.exploreapp.model_data.popular_restaurent_data;
 
 import java.util.List;
 
@@ -42,7 +42,7 @@ public class rest_activity extends AppCompatActivity {
         CollapsingToolbarLayout collapsingToolbarLayout=findViewById(R.id.collapsinglayout);
 
         Bundle bundle= getIntent().getExtras();
-        List<pop_restaurent_data> restaurentData=(List<pop_restaurent_data>)bundle.getSerializable("data");
+        List<popular_restaurent_data> restaurentData=(List<popular_restaurent_data>)bundle.getSerializable("data");
         pos=getIntent().getIntExtra("pos",0);
 
         collapsingToolbarLayout.setTitle(restaurentData.get(pos).getPlacename());

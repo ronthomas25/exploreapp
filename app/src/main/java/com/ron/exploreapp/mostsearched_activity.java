@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.tabs.TabLayout;
 import com.ron.exploreapp.adapter.frag_mostsrc_adapter;
@@ -44,8 +45,8 @@ public class mostsearched_activity extends AppCompatActivity {
         List<mostsearched_data> mostsearchedData=(List<mostsearched_data>)bundle.getSerializable("data");
         pos=getIntent().getIntExtra("pos",0);
 
-        collapsingToolbarLayout.setTitle(mostsearchedData.get(pos).getPlacename());
-        img.setImageResource(mostsearchedData.get(pos).getImg(1));
+        collapsingToolbarLayout.setTitle(mostsearchedData.get(pos).getPlace());
+        Glide.with(getApplicationContext()).load(mostsearchedData.get(pos).getImg_inner()).into(img);
         desc=mostsearchedData.get(pos).getDesc();
         state.setText(mostsearchedData.get(pos).getState());
         ratingBar.setRating(mostsearchedData.get(pos).getRating());

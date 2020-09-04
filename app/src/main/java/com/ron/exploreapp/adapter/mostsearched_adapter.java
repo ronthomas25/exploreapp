@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.ron.exploreapp.R;
 import com.ron.exploreapp.model_data.mostsearched_data;
 import com.ron.exploreapp.mostsearched_activity;
@@ -35,7 +36,7 @@ public class mostsearched_adapter extends RecyclerView.Adapter<mostsearched_adap
 
     @Override
     public void onBindViewHolder(@NonNull mostsearched_viewholder holder, final int position) {
-        holder.img.setImageResource(mostsearchedDataList.get(position).getImg(0));
+        Glide.with(context).load(mostsearchedDataList.get(position).getImg_outer()).dontTransform().into(holder.img);
         holder.img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

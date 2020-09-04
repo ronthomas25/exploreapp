@@ -43,7 +43,15 @@
         android:paddingTop="10dp"
         android:textSize="30sp" />
 
-    <TextView
+         <ImageView
+             android:id="@+id/loc_search"
+             android:layout_width="73dp"
+             android:layout_height="67dp"
+             android:src="@drawable/locationicon2"
+             android:layout_alignParentRight="true"
+             android:layout_marginTop="5dp"/>
+
+        <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Top Picks"

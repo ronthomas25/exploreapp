@@ -2,7 +2,7 @@ package com.ron.exploreapp.model_data;
 
 import java.io.Serializable;
 
-public class pop_restaurent_data implements Serializable {
+public class popular_restaurent_data implements Serializable {
     String img;
     String placename;
     String desc;
@@ -10,10 +10,10 @@ public class pop_restaurent_data implements Serializable {
     float lat,lon;
     String state;
 
-    public pop_restaurent_data(){}
+    public popular_restaurent_data(){}
 
 
-        public pop_restaurent_data(String img, String placename, String desc, double rating, double lat, double lon, String state) {
+        public popular_restaurent_data(String img, String placename, String desc, double rating, double lat, double lon, String state) {
             this.img = img;
             this.placename = placename;
             this.desc = desc;

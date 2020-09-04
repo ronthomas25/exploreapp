@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.ron.exploreapp.R;
-import com.ron.exploreapp.model_data.pop_restaurent_data;
+import com.ron.exploreapp.model_data.popular_restaurent_data;
 import com.ron.exploreapp.rest_activity;
 
 import java.io.Serializable;
@@ -22,8 +22,8 @@ import java.util.List;
 
 public class rest_adapter extends RecyclerView.Adapter<rest_adapter.rest_viewholder> {
     Context context;
-    List<pop_restaurent_data> restaurentDataList;
-    public rest_adapter(Context context, List<pop_restaurent_data> restaurentDataList)
+    List<popular_restaurent_data> restaurentDataList;
+    public rest_adapter(Context context, List<popular_restaurent_data> restaurentDataList)
     {
         this.context=context;
         this.restaurentDataList=restaurentDataList;

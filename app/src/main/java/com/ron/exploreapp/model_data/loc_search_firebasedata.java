@@ -1,8 +1,6 @@
 package com.ron.exploreapp.model_data;
-import java.io.Serializable;
 
-public class mostsearched_data implements Serializable {
-
+public class loc_search_firebasedata {
     String desc;
     String img_inner;
     String img_outer;
@@ -12,7 +10,8 @@ public class mostsearched_data implements Serializable {
     Float rating;
     String state;
 
-    public mostsearched_data(String desc, String img_inner, String img_outer, Float lat, Float lon, String place, Float rating, String state) {
+    public loc_search_firebasedata(){}
+    public loc_search_firebasedata(String desc, String img_inner, String img_outer, Float lat, Float lon, String place, Float rating, String state) {
         this.desc = desc;
         this.img_inner = img_inner;
         this.img_outer = img_outer;
@@ -54,4 +53,7 @@ public class mostsearched_data implements Serializable {
     public String getState() {
         return state;
     }
+}
+
+
 }

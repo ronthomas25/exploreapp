@@ -3,18 +3,16 @@ package com.ron.exploreapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.interfaces.ItemClickListener;
 import com.denzcoskun.imageslider.models.SlideModel;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -22,8 +20,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.ron.exploreapp.adapter.mostsearched_adapter;
 import com.ron.exploreapp.adapter.rest_adapter;
+import com.ron.exploreapp.model_data.most_srcd_firebasedata;
 import com.ron.exploreapp.model_data.mostsearched_data;
-import com.ron.exploreapp.model_data.pop_restaurent_data;
+import com.ron.exploreapp.model_data.popular_restaurent_data;
 import com.ron.exploreapp.model_data.rest_firebasedata;
 import com.ron.exploreapp.model_data.top_picks_data;
 
@@ -38,7 +37,7 @@ public class MainActivity extends BaseActivity{
     int count = 0;
     Timer timer;
     RecyclerView rest_recyclerview, mostsearched_recyclerview;
-    int munnar_img[] = {R.drawable.munnar, R.drawable.munnarinner};
+   /* int munnar_img[] = {R.drawable.munnar, R.drawable.munnarinner};
     int wayanad_img[] = {R.drawable.wayanad, R.drawable.wayanadinner};
     int vagamon_img[] = {R.drawable.vagamon, R.drawable.vagamoninner};
     int kochi_img[] = {R.drawable.kochi, R.drawable.kochi2};
@@ -49,8 +48,8 @@ public class MainActivity extends BaseActivity{
     int paragon_img[] = {R.drawable.paragonlogo, R.drawable.paragonlogo};
     int thakkaram_img[] = {R.drawable.thakkaram, R.drawable.thakkaram};
     int koco_img[] = {R.drawable.koco, R.drawable.koco};
-    int chayakkada_img[] = {R.drawable.chayakkada1, R.drawable.chayakkada1};
-
+    int chayakkada_img[] = {R.drawable.chayakkada1, R.drawable.chayakkada1};*/
+    ImageView loc_search;
     DatabaseReference databaseReference;
 
 
@@ -60,6 +59,13 @@ public class MainActivity extends BaseActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        loc_search=findViewById(R.id.loc_search);
+        loc_search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
         progressBar = findViewById(R.id.progress_bar);
         timer = new Timer();
@@ -89,28 +95,41 @@ public class MainActivity extends BaseActivity{
         topPicksDataList.add(new top_picks_data(vagamon_img,"Vagamon",getString(R.string.vagamon_desc),4.4,9.4050,76.520,"kerala,India"));
         slideronclick(topPicksDataList,imageSlider);
 
-        List<mostsearched_data> mostsearchedDataList=new ArrayList<>();
+   /*     List<mostsearched_data> mostsearchedDataList=new ArrayList<>();
         mostsearchedDataList.add(new mostsearched_data(kochi_img,"Kochi",getString(R.string.kochi_desc),4.0, 9.9312,76.2673,"kerala,India"));
         mostsearchedDataList.add(new mostsearched_data(alp_img,"Alappuzha",getString(R.string.alp_desc),4.3,9.9312,76.2673,"kerala,India"));
         mostsearchedDataList.add(new mostsearched_data(kumarakom_img,"kumarakom",getString(R.string.kumarakom_desc),4.5,9.9312,76.2673,"kerala,India"));
         mostsearchedDataList.add(new mostsearched_data(kovalam_img,"Kovalam",getString(R.string.kovalam_desc),4.3,9.9312,76.2673,"kerala,India"));
         mostsearchedDataList.add(new mostsearched_data(varkala_img,"Varkala",getString(R.string.varkala_desc),4.3,9.9312,76.2673,"kerala,India"));
-        mostsearched_recycler(mostsearchedDataList);
+        mostsearched_recycler(mostsearchedDataList);*/
+        databaseReference=FirebaseDatabase.getInstance().getReference().child("mostsearchedplace");
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                List<mostsearched_data> mostsearchedDataList=new ArrayList<>();
+                for(DataSnapshot data: snapshot.getChildren()){
+                    most_srcd_firebasedata modeldata=data.getValue(most_srcd_firebasedata.class);
+                    mostsearchedDataList.add(new mostsearched_data(modeldata.getDesc(),modeldata.getImg_inner(),modeldata.getImg_outer(),modeldata.getLat(),
+                                             modeldata.getLon(),modeldata.getPlace(),modeldata.getRating(),modeldata.getState()));
+                }
+                mostsearched_recycler(mostsearchedDataList);
+            }
 
-       /* List<restaurent_data> restaurentDataList=new ArrayList<>();
-        restaurentDataList.add(new restaurent_data(paragon_img,"Paragon","Adorned",4,9.9312,76.2673,"Kerala,India"));
-        restaurentDataList.add(new restaurent_data(thakkaram_img,"Thakkaram","Adorned",4,9.9312,76.2673,"Kerala,India"));
-        restaurentDataList.add(new restaurent_data(koco_img,"Ko.co","Adorned",4,9.9312,76.2673,"Kerala,India"));
-        restaurentDataList.add(new restaurent_data(chayakkada_img,"Aadhaminte Chayakada","Adorned",4,9.9312,76.2673,"Kerala,India"));*/
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
         databaseReference=FirebaseDatabase.getInstance().getReference().child("restaurent");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                List<pop_restaurent_data> restaurentDataList=new ArrayList<>();
+                List<popular_restaurent_data> restaurentDataList=new ArrayList<>();
                 for(DataSnapshot data:snapshot.getChildren()){
-                    rest_firebasedata modeldata=data.getValue(rest_firebasedata.class);
-                    restaurentDataList.add(new pop_restaurent_data(modeldata.getImage(),modeldata.getPlace(),modeldata.getDesc(),modeldata.getRating(),modeldata.getLat(),modeldata.getLon(),modeldata.getState()));
+                    rest_firebasedata rest_modeldata=data.getValue(rest_firebasedata.class);
+                    restaurentDataList.add(new popular_restaurent_data(rest_modeldata.getImage(),rest_modeldata.getPlace(),rest_modeldata.getDesc(),rest_modeldata.getRating(),rest_modeldata.getLat(),rest_modeldata.getLon(),rest_modeldata.getState()));
                 }
                 restaurent_recycler(restaurentDataList);
             }
@@ -142,7 +161,7 @@ public class MainActivity extends BaseActivity{
         mostsearched_recyclerview.setLayoutManager(new LinearLayoutManager(this,mostsearched_recyclerview.HORIZONTAL,false));
     }
 
-   private void restaurent_recycler(List<pop_restaurent_data> restaurentDataList)
+   private void restaurent_recycler(List<popular_restaurent_data> restaurentDataList)
    {
        rest_recyclerview=findViewById(R.id.restrecycler);
        rest_adapter rest_adapter=new rest_adapter(this,restaurentDataList);
