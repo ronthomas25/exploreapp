@@ -10,6 +10,7 @@ public class location_data implements Serializable {
     String state;
 
     public location_data(){}
+
     public location_data( Float lat, Float lon, String place, String state) {
 
         this.lat = lat;

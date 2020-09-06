@@ -52,6 +52,7 @@ public class SearchActivity extends BaseActivity {
         databaseReference= FirebaseDatabase.getInstance().getReference().child("searchrestaurants");
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+
         firebase_search("");
         searcher.addTextChangedListener(new TextWatcher() {
            @Override
