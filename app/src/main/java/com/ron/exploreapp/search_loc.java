@@ -22,17 +22,21 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
-import com.ron.exploreapp.model_data.most_srcd_firebasedata;
-import com.ron.exploreapp.model_data.rest_firebasedata;
+import com.ron.exploreapp.model_data.loc_search_firebasedata;
+import com.ron.exploreapp.model_data.location_data;
 
-public class loc_search extends AppCompatActivity {
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+public class search_loc extends AppCompatActivity {
 
     EditText searcher;
     ImageView search;
     RecyclerView recyclerView;
     DatabaseReference databaseReference;
-    FirebaseRecyclerOptions<most_srcd_firebasedata> options;
-    FirebaseRecyclerAdapter<rest_firebasedata, SearchActivity.viewholder> firebaseRecyclerAdapter;
+    FirebaseRecyclerOptions<loc_search_firebasedata> options;
+    FirebaseRecyclerAdapter<loc_search_firebasedata,viewholder> firebaseRecyclerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,16 +77,24 @@ public class loc_search extends AppCompatActivity {
 
     private void firebase_search(String s) {
         Query query=databaseReference.orderByChild("place").startAt(s.toUpperCase()).endAt(s.toLowerCase()+"\uf8ff");
-        options=new FirebaseRecyclerOptions.Builder<most_srcd_firebasedata>().setQuery(query, most_srcd_firebasedata.class).build();
-        firebaseRecyclerAdapter= new FirebaseRecyclerAdapter<lo, SearchActivity.viewholder>(options) {
+        options=new FirebaseRecyclerOptions.Builder<loc_search_firebasedata>().setQuery(query, loc_search_firebasedata.class).build();
+        firebaseRecyclerAdapter= new FirebaseRecyclerAdapter<loc_search_firebasedata,viewholder>(options) {
+
             @Override
-            protected void onBindViewHolder(@NonNull viewholder holder, int position, @NonNull final most_srcd_firebasedata model) {
-                Glide.with(getApplicationContext()).load(model.getImg_outer()).into(holder.image);
+            protected void onBindViewHolder(@NonNull viewholder holder, final int position, @NonNull final loc_search_firebasedata model) {
+              //  Glide.with(getApplicationContext()).load(model.getImg_outer()).into(holder.image);
                 holder.place.setText(model.getPlace());
-                holder.image.setOnClickListener(new View.OnClickListener() {
+                holder.place.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent i=new Intent(loc_search.this,mostsearched_activity.class);
+                        Intent i=new Intent(search_loc.this,loc_search_activity.class);
+                        List<location_data> locationDataList=new ArrayList<>();
+                        locationDataList.add(new location_data(model.getLat(),model.getLon(),
+                                                model.getPlace(),model.getState()));
+                        Bundle bundle=new Bundle();
+                        bundle.putSerializable("data", (Serializable) locationDataList);
+                        i.putExtras(bundle);
+                        i.putExtra("pos",position);
                         startActivity(i);
                     }
                 });

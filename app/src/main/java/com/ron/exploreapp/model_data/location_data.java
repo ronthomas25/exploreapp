@@ -1,38 +1,23 @@
 package com.ron.exploreapp.model_data;
 
-public class location_data {}
-    String desc;
-    String img_inner;
-    String img_outer;
+import java.io.Serializable;
+
+public class location_data implements Serializable {
     Float lat;
     Float lon;
     String place;
-    Float rating;
+   // Float rating;
     String state;
 
     public location_data(){}
-    public location_data(String desc, String img_inner, String img_outer, Float lat, Float lon, String place, Float rating, String state) {
-        this.desc = desc;
-        this.img_inner = img_inner;
-        this.img_outer = img_outer;
+    public location_data( Float lat, Float lon, String place, String state) {
+
         this.lat = lat;
         this.lon = lon;
         this.place = place;
-        this.rating = rating;
         this.state = state;
     }
 
-    public String getDesc() {
-        return desc;
-    }
-
-    public String getImg_inner() {
-        return img_inner;
-    }
-
-    public String getImg_outer() {
-        return img_outer;
-    }
 
     public Float getLat() {
         return lat;
@@ -46,9 +31,6 @@ public class location_data {}
         return place;
     }
 
-    public Float getRating() {
-        return rating;
-    }
 
     public String getState() {
         return state;

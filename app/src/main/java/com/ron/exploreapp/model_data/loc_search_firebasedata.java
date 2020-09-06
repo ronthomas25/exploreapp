@@ -1,37 +1,50 @@
 package com.ron.exploreapp.model_data;
 
-public class loc_search_firebasedata {
-    String desc;
-    String img_inner;
-    String img_outer;
+import java.io.Serializable;
+import java.util.List;
+
+public class loc_search_firebasedata implements Serializable {
+
     Float lat;
     Float lon;
     String place;
-    Float rating;
     String state;
+    rest_firebasedata rest_firebasedata;
+
+    public void setRest_firebasedata(rest_firebasedata  rest_firebasedata) {
+        this.rest_firebasedata = rest_firebasedata;
+    }
+
+    public com.ron.exploreapp.model_data.rest_firebasedata getRest_firebasedata() {
+        return rest_firebasedata;
+    }
 
     public loc_search_firebasedata(){}
-    public loc_search_firebasedata(String desc, String img_inner, String img_outer, Float lat, Float lon, String place, Float rating, String state) {
-        this.desc = desc;
-        this.img_inner = img_inner;
-        this.img_outer = img_outer;
+
+    public loc_search_firebasedata( Float lat, Float lon, String place, String state,rest_firebasedata rest_firebasedata) {
+
         this.lat = lat;
         this.lon = lon;
         this.place = place;
-        this.rating = rating;
         this.state = state;
+        this.rest_firebasedata=rest_firebasedata;
     }
 
-    public String getDesc() {
-        return desc;
+
+    public void setLat(Float lat) {
+        this.lat = lat;
     }
 
-    public String getImg_inner() {
-        return img_inner;
+    public void setLon(Float lon) {
+        this.lon = lon;
     }
 
-    public String getImg_outer() {
-        return img_outer;
+    public void setPlace(String place) {
+        this.place = place;
+    }
+
+    public void setState(String state) {
+        this.state = state;
     }
 
     public Float getLat() {
@@ -46,14 +59,10 @@ public class loc_search_firebasedata {
         return place;
     }
 
-    public Float getRating() {
-        return rating;
-    }
-
     public String getState() {
         return state;
     }
 }
 
 
-}
+
