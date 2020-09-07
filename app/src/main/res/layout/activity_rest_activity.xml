@@ -39,13 +39,6 @@
                     android:scaleType="centerCrop"
                     android:src="@drawable/ic_launcher_background" />
 
-                <ImageView
-                    android:id="@+id/backbtn"
-                    android:layout_width="56dp"
-                    android:layout_height="33dp"
-                    android:layout_marginLeft="2dp"
-                    android:layout_marginTop="7dp"
-                    app:srcCompat="@drawable/backbutton" />
 
             </androidx.cardview.widget.CardView>
 

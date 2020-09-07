@@ -33,7 +33,6 @@ public class rest_firebase_activity extends AppCompatActivity {
 
         img=findViewById(R.id.placeimg);
         state=findViewById(R.id.state);
-        backbtn=findViewById(R.id.backbtn);
         ratingBar=findViewById(R.id.ratingBar);
         rating=findViewById(R.id.rating);
         gps=findViewById(R.id.gps_icon);
@@ -62,13 +61,6 @@ public class rest_firebase_activity extends AppCompatActivity {
             }
         });
 
-        backbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(rest_firebase_activity.this,SearchActivity.class);
-                startActivity(i);
-            }
-        });
 
 
     }

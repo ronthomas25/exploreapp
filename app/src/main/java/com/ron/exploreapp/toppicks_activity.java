@@ -32,7 +32,6 @@ public class toppicks_activity extends AppCompatActivity {
 
         collapsingToolbarLayout=findViewById(R.id.collapsinglayout);
         placeimg=findViewById(R.id.placeimg);
-        backbtn=findViewById(R.id.backbtn);
         gps=findViewById(R.id.gps_icon);
         rating=findViewById(R.id.rating);
         ratingBar=findViewById(R.id.ratingBar);
@@ -56,12 +55,6 @@ public class toppicks_activity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        backbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i=new Intent(toppicks_activity.this,MainActivity.class);
-                startActivity(i);
-            }
-        });
+
     }
 }

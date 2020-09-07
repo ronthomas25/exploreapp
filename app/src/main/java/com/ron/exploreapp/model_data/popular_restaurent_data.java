@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class popular_restaurent_data implements Serializable {
     String img;
+    String imginner;
     String placename;
     String desc;
     float rating;
@@ -13,8 +14,9 @@ public class popular_restaurent_data implements Serializable {
     public popular_restaurent_data(){}
 
 
-        public popular_restaurent_data(String img, String placename, String desc, double rating, double lat, double lon, String state) {
+        public popular_restaurent_data(String img, String imginner, String placename, String desc, double rating, double lat, double lon, String state) {
             this.img = img;
+            this.imginner = imginner;
             this.placename = placename;
             this.desc = desc;
             this.rating = (float) rating;
@@ -68,6 +70,10 @@ public class popular_restaurent_data implements Serializable {
         public String getImg() {
             return img;
         }
+
+         public String getImgInner() {
+        return imginner;
+    }
 
         public String getPlacename() {
             return placename;

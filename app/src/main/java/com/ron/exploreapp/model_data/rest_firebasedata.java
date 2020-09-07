@@ -3,6 +3,7 @@ package com.ron.exploreapp.model_data;
 public class rest_firebasedata {
   String desc;
   String image;
+  String imageinner;
   float lat;
   float lon;
   String place;
@@ -11,9 +12,10 @@ public class rest_firebasedata {
 
   public rest_firebasedata(){ }
 
-    public rest_firebasedata(String desc, String image, float lat, float lon, String place, float rating, String state) {
+    public rest_firebasedata(String desc, String image, String imageinner, float lat, float lon, String place, float rating, String state) {
         this.desc = desc;
         this.image = image;
+        this.imageinner = imageinner;
         this.lat = lat;
         this.lon = lon;
         this.place = place;
@@ -31,6 +33,10 @@ public class rest_firebasedata {
 
     public String getImage() {
         return image;
+    }
+
+    public String getImageInner() {
+        return imageinner;
     }
 
     public float getLat() {
