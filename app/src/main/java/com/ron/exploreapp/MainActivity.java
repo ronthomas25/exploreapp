@@ -37,12 +37,23 @@ public class MainActivity extends BaseActivity{
     int count = 0;
     Timer timer;
     RecyclerView rest_recyclerview, mostsearched_recyclerview;
-    int munnar_img[] = {R.drawable.munnar, R.drawable.munnarinner};
+   int munnar_img[] = {R.drawable.munnar, R.drawable.munnarinner};
     int wayanad_img[] = {R.drawable.wayanad, R.drawable.wayanadinner};
     int vagamon_img[] = {R.drawable.vagamon, R.drawable.vagamoninner};
-
+    /* int kochi_img[] = {R.drawable.kochi, R.drawable.kochi2};
+   int alp_img[] = {R.drawable.alp, R.drawable.alp2};
+   int kumarakom_img[] = {R.drawable.kumarakom, R.drawable.kumarakom2};
+   int kovalam_img[] = {R.drawable.kovalam, R.drawable.kovalam2};
+   int varkala_img[] = {R.drawable.varkala, R.drawable.varkala2};
+   int paragon_img[] = {R.drawable.paragonlogo, R.drawable.paragonlogo};
+   int thakkaram_img[] = {R.drawable.thakkaram, R.drawable.thakkaram};
+   int koco_img[] = {R.drawable.koco, R.drawable.koco};
+   int chayakkada_img[] = {R.drawable.chayakkada1, R.drawable.chayakkada1};*/
     ImageView loc_search;
     DatabaseReference databaseReference;
+
+
+
 
 
     @Override
@@ -52,8 +63,7 @@ public class MainActivity extends BaseActivity{
         loc_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(getApplicationContext(),search_loc.class);
-                startActivity(intent);
+
             }
         });
 
@@ -85,6 +95,13 @@ public class MainActivity extends BaseActivity{
         topPicksDataList.add(new top_picks_data(vagamon_img,"Vagamon",getString(R.string.vagamon_desc),4.4,9.4050,76.520,"kerala,India"));
         slideronclick(topPicksDataList,imageSlider);
 
+   /*     List<mostsearched_data> mostsearchedDataList=new ArrayList<>();
+        mostsearchedDataList.add(new mostsearched_data(kochi_img,"Kochi",getString(R.string.kochi_desc),4.0, 9.9312,76.2673,"kerala,India"));
+        mostsearchedDataList.add(new mostsearched_data(alp_img,"Alappuzha",getString(R.string.alp_desc),4.3,9.9312,76.2673,"kerala,India"));
+        mostsearchedDataList.add(new mostsearched_data(kumarakom_img,"kumarakom",getString(R.string.kumarakom_desc),4.5,9.9312,76.2673,"kerala,India"));
+        mostsearchedDataList.add(new mostsearched_data(kovalam_img,"Kovalam",getString(R.string.kovalam_desc),4.3,9.9312,76.2673,"kerala,India"));
+        mostsearchedDataList.add(new mostsearched_data(varkala_img,"Varkala",getString(R.string.varkala_desc),4.3,9.9312,76.2673,"kerala,India"));
+        mostsearched_recycler(mostsearchedDataList);*/
         databaseReference=FirebaseDatabase.getInstance().getReference().child("mostsearchedplace");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -181,7 +198,15 @@ public class MainActivity extends BaseActivity{
                }
            }
        });
-
+       ImageView imageView = (ImageView) findViewById(R.id.loc_search);
+       imageView.bringToFront();
+       imageView.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               Intent intent1 = new Intent(MainActivity.this, search_loc.class);
+               startActivity(intent1);
+           }
+       });
 
    }
 

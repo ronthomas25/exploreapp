@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.google.android.gms.common.data.DataHolder;
 import com.ron.exploreapp.R;
 import com.ron.exploreapp.model_data.popular_restaurent_data;
 import com.ron.exploreapp.rest_activity;
@@ -64,6 +65,7 @@ public class rest_adapter extends RecyclerView.Adapter<rest_adapter.rest_viewhol
             super(itemView);
             rest_image=itemView.findViewById(R.id.restimg);
         }
+
     }
 }
 

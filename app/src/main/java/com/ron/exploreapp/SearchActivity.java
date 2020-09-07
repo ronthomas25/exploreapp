@@ -47,7 +47,6 @@ public class SearchActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
 
         searcher =findViewById(R.id.searchbar);
-        search =findViewById(R.id.searchicon);
         recyclerView=findViewById(R.id.recyclerview);
         databaseReference= FirebaseDatabase.getInstance().getReference().child("searchrestaurants");
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

@@ -44,7 +44,7 @@ public class search_loc extends AppCompatActivity {
         setContentView(R.layout.activity_loc_search);
 
         searcher =findViewById(R.id.searchbar);
-        search =findViewById(R.id.searchicon);
+
         recyclerView=findViewById(R.id.recyclerview);
         databaseReference= FirebaseDatabase.getInstance().getReference().child("location");
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

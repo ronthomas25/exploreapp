@@ -35,7 +35,6 @@ public class rest_activity extends AppCompatActivity {
         setContentView(R.layout.activity_rest_activity);
         img=findViewById(R.id.placeimg);
         state=findViewById(R.id.state);
-        backbtn=findViewById(R.id.backbtn);
         ratingBar=findViewById(R.id.ratingBar);
         rating=findViewById(R.id.rating);
         gps=findViewById(R.id.gps_icon);
@@ -63,13 +62,7 @@ public class rest_activity extends AppCompatActivity {
             }
         });
 
-        backbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(rest_activity.this,MainActivity.class);
-                startActivity(i);
-            }
-        });
+
 
 
     }
