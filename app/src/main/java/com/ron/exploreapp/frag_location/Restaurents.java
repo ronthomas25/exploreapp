@@ -18,22 +18,20 @@ import com.bumptech.glide.Glide;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.ron.exploreapp.R;
+import com.ron.exploreapp.SearchActivity;
 import com.ron.exploreapp.model_data.rest_firebasedata;
 
 
 public class Restaurents extends Fragment {
 
-    FirebaseRecyclerAdapter<rest_firebasedata, viewholder> firebaseRecyclerAdapter;
-    FirebaseRecyclerOptions<rest_firebasedata> options;
-    RecyclerView recyclerView;
+   public FirebaseRecyclerAdapter<rest_firebasedata, SearchActivity.viewholder> firebaseRecyclerAdapter;
+    public FirebaseRecyclerOptions<rest_firebasedata> options;
+   public RecyclerView recyclerView;
     String name;
-    DatabaseReference databaseReference;
+   public DatabaseReference databaseReference;
 
 
     private static final String ARG_PARAM1 = "param1";
@@ -67,23 +65,22 @@ public class Restaurents extends Fragment {
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_restaurents, container, false);
-
         recyclerView = view.findViewById(R.id.loc_searh_rcyclr);
         Bundle bundle = getArguments();
         name = bundle.getString("placename");
-        Toast.makeText(getContext(),name,Toast.LENGTH_LONG).show();
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("location").child(name).child("restaurents");
+        Toast.makeText(getContext(), name, Toast.LENGTH_SHORT).show();
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("location").child(name.toLowerCase()).child("restaurents");
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setHasFixedSize(false);
+        rest_recycler();
         return view;
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
+    public void rest_recycler() {
         options = new FirebaseRecyclerOptions.Builder<rest_firebasedata>().setQuery(databaseReference, rest_firebasedata.class).build();
-        firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<rest_firebasedata, viewholder>(options) {
+        firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<rest_firebasedata, SearchActivity.viewholder>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull viewholder holder, int position, @NonNull rest_firebasedata model) {
+            protected void onBindViewHolder(@NonNull SearchActivity.viewholder holder, int position, @NonNull rest_firebasedata model) {
                 Glide.with(getContext()).load(model.getImage()).into(holder.image);
                 holder.place.setText(model.getPlace());
             }
@@ -91,25 +88,23 @@ public class Restaurents extends Fragment {
             @NonNull
 
             @Override
-            public viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.loc_search_rest, parent, false);
-                return new viewholder(view);
+            public SearchActivity.viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.search_recyclerlayout, parent, false);
+                return new SearchActivity.viewholder(view);
             }
         };
         recyclerView.setAdapter(firebaseRecyclerAdapter);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
         firebaseRecyclerAdapter.startListening();
     }
 
-    public class viewholder extends RecyclerView.ViewHolder {
-
-        ImageView image;
-        TextView place;
-
-        public viewholder(@NonNull View itemView) {
-            super(itemView);
-            image = itemView.findViewById(R.id.loc_img);
-            place = itemView.findViewById(R.id.loc_text);
-        }
+    @Override
+    public void onStop() {
+        super.onStop();
+        firebaseRecyclerAdapter.stopListening();
     }
-
 }

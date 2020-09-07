@@ -7,15 +7,6 @@
     tools:context=".SearchActivity">
 
 
-
-    <include
-        layout="@layout/item_bottom_navigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:layout_alignParentBottom="true" />
-
-
     <EditText
         android:id="@+id/searchbar"
         android:layout_width="270dp"
@@ -37,11 +28,11 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"
-        android:layout_width="393dp"
-        android:layout_height="562dp"
+        android:layout_width="396dp"
+        android:layout_height="630dp"
         android:layout_below="@+id/searchbar"
-        android:paddingLeft="30dp"
-        android:layout_marginTop="10dp" />
+        android:layout_marginTop="10dp"
+        android:paddingLeft="11dp" />
 
 
 </RelativeLayout>

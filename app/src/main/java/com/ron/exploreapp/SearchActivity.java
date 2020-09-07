@@ -115,10 +115,10 @@ public class SearchActivity extends BaseActivity {
        firebaseRecyclerAdapter.startListening();
     }
 
-    public class viewholder extends RecyclerView.ViewHolder{
+    public static class viewholder extends RecyclerView.ViewHolder{
 
-        ImageView image;
-        TextView place;
+        public ImageView image;
+        public TextView place;
         public viewholder(@NonNull View itemView) {
             super(itemView);
             image=itemView.findViewById(R.id.dp_image);

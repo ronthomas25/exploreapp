@@ -16,7 +16,7 @@ import com.ron.exploreapp.model_data.location_data;
 import java.util.List;
 
 public class frag_loc_adapter extends FragmentPagerAdapter {
-
+     @NonNull
      int no_tab;
      String name;
      public frag_loc_adapter(@NonNull FragmentManager fm,int no_tab,String name) {
@@ -30,19 +30,21 @@ public class frag_loc_adapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position){
             case 0:
-                   Entertainment entertainment=new Entertainment();
-                   return entertainment;
+                Entertainment entertainment=new Entertainment();
+                return entertainment;
+
 
             case 1:
                    Attractions attractions=new Attractions();
                    return attractions;
 
+
             case 2:
-                   Restaurents restaurents=new Restaurents();
-                   Bundle bundle=new Bundle();
-                   bundle.putString("placename",name);
-                   restaurents.setArguments(bundle);
-                   return restaurents;
+                Restaurents restaurents=new Restaurents();
+                Bundle bundle=new Bundle();
+                bundle.putString("placename",name);
+                restaurents.setArguments(bundle);
+                return restaurents;
 
             default:   return null;
         }
