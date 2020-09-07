@@ -45,7 +45,7 @@ public class rest_activity extends AppCompatActivity {
         pos=getIntent().getIntExtra("pos",0);
 
         collapsingToolbarLayout.setTitle(restaurentData.get(pos).getPlacename());
-        Glide.with(getApplicationContext()).load(restaurentData.get(pos).getImg()).into(img);
+        Glide.with(getApplicationContext()).load(restaurentData.get(pos).getImgInner()).into(img);
         desc=restaurentData.get(pos).getDesc();
         state.setText(restaurentData.get(pos).getState());
         ratingBar.setRating(restaurentData.get(pos).getRating());

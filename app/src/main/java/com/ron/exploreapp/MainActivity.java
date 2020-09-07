@@ -33,9 +33,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class MainActivity extends BaseActivity{
-    ProgressBar progressBar;
-    int count = 0;
-    Timer timer;
+
     RecyclerView rest_recyclerview, mostsearched_recyclerview;
    int munnar_img[] = {R.drawable.munnar, R.drawable.munnarinner};
     int wayanad_img[] = {R.drawable.wayanad, R.drawable.wayanadinner};
@@ -67,19 +65,7 @@ public class MainActivity extends BaseActivity{
             }
         });
 
-        progressBar = findViewById(R.id.progress_bar);
-        timer = new Timer();
-        TimerTask timerTask = new TimerTask() {
-            @Override
-            public void run() {
-                count ++;
-                progressBar.setProgress(count);
-                if(count==100) {
-                    timer.cancel();
-                }
-            }
-        };
-        timer.schedule(timerTask,0,100);
+
 
 
         List<SlideModel> slideModels=new ArrayList<>();
@@ -129,7 +115,7 @@ public class MainActivity extends BaseActivity{
                 List<popular_restaurent_data> restaurentDataList=new ArrayList<>();
                 for(DataSnapshot data:snapshot.getChildren()){
                     rest_firebasedata rest_modeldata=data.getValue(rest_firebasedata.class);
-                    restaurentDataList.add(new popular_restaurent_data(rest_modeldata.getImage(),rest_modeldata.getPlace(),rest_modeldata.getDesc(),rest_modeldata.getRating(),rest_modeldata.getLat(),rest_modeldata.getLon(),rest_modeldata.getState()));
+                    restaurentDataList.add(new popular_restaurent_data(rest_modeldata.getImage(),rest_modeldata.getImageInner(),rest_modeldata.getPlace(),rest_modeldata.getDesc(),rest_modeldata.getRating(),rest_modeldata.getLat(),rest_modeldata.getLon(),rest_modeldata.getState()));
                 }
                 restaurent_recycler(restaurentDataList);
             }
