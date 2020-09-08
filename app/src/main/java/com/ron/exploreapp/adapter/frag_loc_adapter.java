@@ -39,11 +39,17 @@ public class frag_loc_adapter extends FragmentPagerAdapter {
 
             case 1:
                 Entertainment entertainment=new Entertainment();
+                Bundle bundle1=new Bundle();
+                bundle1.putString("placename",name);
+                entertainment.setArguments(bundle1);
                 return entertainment;
 
 
             case 2:
                    Attractions attractions=new Attractions();
+                Bundle bundle2=new Bundle();
+                bundle2.putString("placename",name);
+                attractions.setArguments(bundle2);
                    return attractions;
 
 
