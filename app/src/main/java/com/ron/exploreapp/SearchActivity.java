@@ -78,10 +78,10 @@ public class SearchActivity extends BaseActivity {
 
     }
 
-    private void firebase_search(String s) {
-       Query query=databaseReference.orderByChild("place").startAt(s.toUpperCase()).endAt(s.toLowerCase()+"\uf8ff");
-       options=new FirebaseRecyclerOptions.Builder<rest_firebasedata>().setQuery(query,rest_firebasedata.class).build();
-       firebaseRecyclerAdapter=new FirebaseRecyclerAdapter<rest_firebasedata,viewholder>(options) {
+    private void firebase_search(String s){
+      Query query=databaseReference.orderByChild("place").startAt(s.toUpperCase()).endAt(s.toLowerCase()+"\uf8ff");
+      options=new FirebaseRecyclerOptions.Builder<rest_firebasedata>().setQuery(query,rest_firebasedata.class).build();
+      firebaseRecyclerAdapter=new FirebaseRecyclerAdapter<rest_firebasedata,viewholder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull viewholder holder, int position, @NonNull final rest_firebasedata model) {
                 Glide.with(getApplicationContext()).load(model.getImage()).into(holder.image);

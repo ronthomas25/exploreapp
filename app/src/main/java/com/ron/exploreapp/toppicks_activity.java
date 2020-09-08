@@ -1,6 +1,7 @@
 package com.ron.exploreapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -10,12 +11,19 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
+import com.google.android.material.tabs.TabLayout;
+import com.ron.exploreapp.adapter.frag_mostsrc_adapter;
 import com.ron.exploreapp.model_data.top_picks_data;
 
 import java.util.List;
 
 public class toppicks_activity extends AppCompatActivity {
+
+
+    TabLayout tabLayout;
+    ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +37,7 @@ public class toppicks_activity extends AppCompatActivity {
         int pos;
         float lat,lon;
         final String uri;
+        String desc;
 
         collapsingToolbarLayout=findViewById(R.id.collapsinglayout);
         placeimg=findViewById(R.id.placeimg);
@@ -40,8 +49,9 @@ public class toppicks_activity extends AppCompatActivity {
         Bundle bundle=getIntent().getExtras();
         List<top_picks_data> topPicksDataList= (List<top_picks_data>) bundle.getSerializable("data");
         pos=getIntent().getIntExtra("position",0);
-        placeimg.setImageResource(topPicksDataList.get(pos).getImg(1));
-        collapsingToolbarLayout.setTitle(topPicksDataList.get(pos).getPlacename());
+        desc=topPicksDataList.get(pos).getDesc();
+        Glide.with(getApplicationContext()).load(topPicksDataList.get(pos).getImage_inner()).into(placeimg);
+        collapsingToolbarLayout.setTitle(topPicksDataList.get(pos).getPlace());
         state.setText(topPicksDataList.get(pos).getState());
         rating.setText(topPicksDataList.get(pos).getRating()+"");
         ratingBar.setRating((float) topPicksDataList.get(pos).getRating());
@@ -55,6 +65,34 @@ public class toppicks_activity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+        fragadapter(desc);
+    }
+
+    public void fragadapter(String desc)
+    {
+            tabLayout=findViewById(R.id.tablayout);
+            viewPager=findViewById(R.id.viewpager);
+            frag_mostsrc_adapter fragMostsrcAdapter=new frag_mostsrc_adapter(getSupportFragmentManager(),tabLayout.getTabCount(),desc);
+            viewPager.setAdapter(fragMostsrcAdapter);
+            tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+                @Override
+                public void onTabSelected(TabLayout.Tab tab) {
+                    viewPager.setCurrentItem(tab.getPosition());
+                }
+
+                @Override
+                public void onTabUnselected(TabLayout.Tab tab) {
+
+                }
+
+                @Override
+                public void onTabReselected(TabLayout.Tab tab) {
+
+                }
+            });
+            viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
     }
+
+
 }

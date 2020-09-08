@@ -94,7 +94,7 @@ public class search_loc extends AppCompatActivity {
                         Bundle bundle=new Bundle();
                         bundle.putSerializable("data", (Serializable) locationDataList);
                         i.putExtras(bundle);
-                        i.putExtra("pos",position);
+                        i.putExtra("pos",0);
                         startActivity(i);
                     }
                 });

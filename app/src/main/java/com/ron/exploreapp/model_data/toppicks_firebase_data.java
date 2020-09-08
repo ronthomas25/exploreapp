@@ -1,20 +1,18 @@
 package com.ron.exploreapp.model_data;
 
-import java.io.Serializable;
+public class toppicks_firebase_data {
+    String desc;
+    String image;
+    String image_inner;
+    Float lat;
+    Float lon;
+    String place;
+    Float rating;
+    String state;
 
-public class top_picks_data implements Serializable {
-   String desc;
-   String image;
-   String image_inner;
-   Float lat;
-   Float lon;
-   String place;
-   Float rating;
-   String state;
+    public toppicks_firebase_data(){}
 
-   public top_picks_data(){}
-
-    public top_picks_data(String desc, String image,String image_inner, Float lat, Float lon, String place, Float rating, String state) {
+    public toppicks_firebase_data(String desc, String image,String image_inner, Float lat, Float lon, String place, Float rating, String state) {
         this.desc = desc;
         this.image = image;
         this.image_inner=image_inner;
@@ -56,4 +54,5 @@ public class top_picks_data implements Serializable {
     public String getState() {
         return state;
     }
+
 }

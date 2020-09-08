@@ -8,30 +8,23 @@ public class loc_search_firebasedata implements Serializable {
     Float lat;
     Float lon;
     String place;
-    rest_firebasedata restaurents;
+    //rest_firebasedata restaurents;
     String state;
 
 
 
     public loc_search_firebasedata(){}
 
-    public loc_search_firebasedata( Float lat, Float lon, String place,rest_firebasedata restaurents, String state) {
+    public loc_search_firebasedata( Float lat, Float lon, String place, String state) {
 
         this.lat = lat;
         this.lon = lon;
         this.place = place;
-        this.restaurents=restaurents;
+       // this.restaurents=restaurents;
         this.state = state;
 
     }
 
-    public rest_firebasedata getRestaurents() {
-        return restaurents;
-    }
-
-    public void setRestaurents(rest_firebasedata restaurents) {
-        this.restaurents = restaurents;
-    }
 
     public void setLat(Float lat) {
         this.lat = lat;

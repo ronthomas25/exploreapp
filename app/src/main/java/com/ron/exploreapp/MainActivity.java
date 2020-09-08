@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -25,12 +24,11 @@ import com.ron.exploreapp.model_data.mostsearched_data;
 import com.ron.exploreapp.model_data.popular_restaurent_data;
 import com.ron.exploreapp.model_data.rest_firebasedata;
 import com.ron.exploreapp.model_data.top_picks_data;
+import com.ron.exploreapp.model_data.toppicks_firebase_data;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class MainActivity extends BaseActivity{
 
@@ -66,28 +64,39 @@ public class MainActivity extends BaseActivity{
         });
 
 
+        databaseReference=FirebaseDatabase.getInstance().getReference().child("toppicks");
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                List<top_picks_data> topPicksDataList=new ArrayList<>();
+                List<SlideModel> slideModels=new ArrayList<>();
+                ImageSlider imageSlider=findViewById(R.id.slider);
+                for (DataSnapshot data:snapshot.getChildren()){
+                    toppicks_firebase_data modeldata=data.getValue(toppicks_firebase_data.class);
+                    topPicksDataList.add(new top_picks_data(modeldata.getDesc(),modeldata.getImage(),modeldata.getImage_inner(),modeldata.getLat(),modeldata.getLon(),
+                                                            modeldata.getPlace(),modeldata.getRating(),modeldata.getState()));
+                    slideModels.add(new SlideModel(modeldata.getImage()));
 
+                }
+                imageSlider.setImageList(slideModels,true);
+                slideronclick(topPicksDataList,imageSlider);
+            }
 
-        List<SlideModel> slideModels=new ArrayList<>();
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+       /* List<SlideModel> slideModels=new ArrayList<>();
         ImageSlider imageSlider=findViewById(R.id.slider);
         slideModels.add(new SlideModel(R.drawable.munnar));
         slideModels.add(new SlideModel(R.drawable.wayanad));
         slideModels.add(new SlideModel(R.drawable.vagamon));
-        imageSlider.setImageList(slideModels,true);
+        imageSlider.setImageList(slideModels,true);*/
 
-        List<top_picks_data> topPicksDataList=new ArrayList<>();
-        topPicksDataList.add(new top_picks_data(munnar_img,"Munnar",getString(R.string.munnar_desc),4.8,10.1697,77.0640,"kerala,India"));
-        topPicksDataList.add(new top_picks_data(wayanad_img,"Wayanad",getString(R.string.wayanad_desc),4.5,11.2954,76.120,"kerala,India"));
-        topPicksDataList.add(new top_picks_data(vagamon_img,"Vagamon",getString(R.string.vagamon_desc),4.4,9.4050,76.520,"kerala,India"));
-        slideronclick(topPicksDataList,imageSlider);
 
-   /*     List<mostsearched_data> mostsearchedDataList=new ArrayList<>();
-        mostsearchedDataList.add(new mostsearched_data(kochi_img,"Kochi",getString(R.string.kochi_desc),4.0, 9.9312,76.2673,"kerala,India"));
-        mostsearchedDataList.add(new mostsearched_data(alp_img,"Alappuzha",getString(R.string.alp_desc),4.3,9.9312,76.2673,"kerala,India"));
-        mostsearchedDataList.add(new mostsearched_data(kumarakom_img,"kumarakom",getString(R.string.kumarakom_desc),4.5,9.9312,76.2673,"kerala,India"));
-        mostsearchedDataList.add(new mostsearched_data(kovalam_img,"Kovalam",getString(R.string.kovalam_desc),4.3,9.9312,76.2673,"kerala,India"));
-        mostsearchedDataList.add(new mostsearched_data(varkala_img,"Varkala",getString(R.string.varkala_desc),4.3,9.9312,76.2673,"kerala,India"));
-        mostsearched_recycler(mostsearchedDataList);*/
+
         databaseReference=FirebaseDatabase.getInstance().getReference().child("mostsearchedplace");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
