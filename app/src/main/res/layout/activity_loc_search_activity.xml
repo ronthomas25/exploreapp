@@ -39,13 +39,7 @@
                     android:scaleType="centerCrop"
                     android:src="@drawable/ic_launcher_background" />
 
-                <ImageView
-                    android:id="@+id/backbtn"
-                    android:layout_width="56dp"
-                    android:layout_height="33dp"
-                    android:layout_marginLeft="2dp"
-                    android:layout_marginTop="7dp"
-                    app:srcCompat="@drawable/backbutton" />
+
 
             </androidx.cardview.widget.CardView>
 
@@ -94,6 +88,7 @@
                 android:scaleX="0.4"
                 android:scaleY="0.4"
                 android:progressTint="#D4AF37"
+                android:visibility="invisible"
                 android:isIndicator="true"
                 tools:ignore="UnknownId" />
 
@@ -106,6 +101,7 @@
                 android:layout_marginTop="15dp"
                 android:layout_marginRight="150dp"
                 android:text="text"
+                android:visibility="invisible"
                 android:textSize="20sp"
                 tools:ignore="NotSibling" />
 
@@ -117,6 +113,13 @@
                 app:tabIndicatorColor="@android:color/black"
                 app:tabIndicatorFullWidth="false"
                 app:tabGravity="fill">
+
+                <com.google.android.material.tabs.TabItem
+                    android:id="@+id/thirdfrag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Restaurants"
+                    tools:ignore="InvalidId" />
 
                 <com.google.android.material.tabs.TabItem
                     android:id="@+id/firstfrag"
@@ -131,12 +134,7 @@
                     android:layout_height="wrap_content"
                     android:text="Attractions" />
 
-                <com.google.android.material.tabs.TabItem
-                    android:id="@+id/thirdfrag"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Restaurents"
-                    tools:ignore="InvalidId" />
+
             </com.google.android.material.tabs.TabLayout>
 
             <androidx.viewpager.widget.ViewPager

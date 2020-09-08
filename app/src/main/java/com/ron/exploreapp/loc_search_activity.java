@@ -39,7 +39,6 @@ public class loc_search_activity extends AppCompatActivity {
 
         img=findViewById(R.id.placeimg);
         state=findViewById(R.id.state);
-        backbtn=findViewById(R.id.backbtn);
         ratingBar=findViewById(R.id.ratingBar);
         rating=findViewById(R.id.rating);
         gps=findViewById(R.id.gps_icon);
@@ -50,7 +49,7 @@ public class loc_search_activity extends AppCompatActivity {
         pos=getIntent().getIntExtra("pos",0);
 
         collapsingToolbarLayout.setTitle(locationData.get(pos).getPlace());
-        //Glide.with(getApplicationContext()).load(locationData.get(pos).getImg_inner()).into(img);
+        Glide.with(getApplicationContext()).load(locationData.get(pos).getImg()).into(img);
       //  desc=locationData.get(pos).getDesc();
         state.setText(locationData.get(pos).getState());
         //ratingBar.setRating(locationData.get(pos).getRating());
@@ -68,13 +67,7 @@ public class loc_search_activity extends AppCompatActivity {
             }
         });
 
-        backbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(loc_search_activity.this,MainActivity.class);
-                startActivity(i);
-            }
-        });
+
 
 
     }

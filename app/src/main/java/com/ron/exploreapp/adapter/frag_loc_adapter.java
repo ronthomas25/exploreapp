@@ -29,22 +29,25 @@ public class frag_loc_adapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         switch (position){
+
             case 0:
-                Entertainment entertainment=new Entertainment();
-                return entertainment;
-
-
-            case 1:
-                   Attractions attractions=new Attractions();
-                   return attractions;
-
-
-            case 2:
                 Restaurents restaurents=new Restaurents();
                 Bundle bundle=new Bundle();
                 bundle.putString("placename",name);
                 restaurents.setArguments(bundle);
                 return restaurents;
+
+            case 1:
+                Entertainment entertainment=new Entertainment();
+                return entertainment;
+
+
+            case 2:
+                   Attractions attractions=new Attractions();
+                   return attractions;
+
+
+
 
             default:   return null;
         }

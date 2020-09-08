@@ -34,6 +34,7 @@
             android:id="@+id/text_view_priority"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
+            android:visibility="invisible"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:layout_alignParentRight="false" />
 
