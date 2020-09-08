@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 public class loc_search_firebasedata implements Serializable {
-
+    String img;
     Float lat;
     Float lon;
     String place;
@@ -15,8 +15,8 @@ public class loc_search_firebasedata implements Serializable {
 
     public loc_search_firebasedata(){}
 
-    public loc_search_firebasedata( Float lat, Float lon, String place,rest_firebasedata restaurents, String state) {
-
+    public loc_search_firebasedata( String img, Float lat, Float lon, String place,rest_firebasedata restaurents, String state) {
+        this.img = img;
         this.lat = lat;
         this.lon = lon;
         this.place = place;
@@ -31,6 +31,10 @@ public class loc_search_firebasedata implements Serializable {
 
     public void setRestaurents(rest_firebasedata restaurents) {
         this.restaurents = restaurents;
+    }
+
+    public String getImg() {
+        return img;
     }
 
     public void setLat(Float lat) {

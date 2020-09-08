@@ -82,14 +82,14 @@ public class search_loc extends AppCompatActivity {
 
             @Override
             protected void onBindViewHolder(@NonNull viewholder holder, final int position, @NonNull final loc_search_firebasedata model) {
-              //  Glide.with(getApplicationContext()).load(model.getImg_outer()).into(holder.image);
+               Glide.with(getApplicationContext()).load(model.getImg()).into(holder.image);
                 holder.place.setText(model.getPlace());
                 holder.place.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Intent i=new Intent(search_loc.this,loc_search_activity.class);
                         List<location_data> locationDataList=new ArrayList<>();
-                        locationDataList.add(new location_data(model.getLat(),model.getLon(),
+                        locationDataList.add(new location_data(model.getImg(),model.getLat(),model.getLon(),
                                                 model.getPlace(),model.getState()));
                         Bundle bundle=new Bundle();
                         bundle.putSerializable("data", (Serializable) locationDataList);

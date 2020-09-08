@@ -3,6 +3,7 @@ package com.ron.exploreapp.model_data;
 import java.io.Serializable;
 
 public class location_data implements Serializable {
+    String img;
     Float lat;
     Float lon;
     String place;
@@ -11,14 +12,15 @@ public class location_data implements Serializable {
 
     public location_data(){}
 
-    public location_data( Float lat, Float lon, String place, String state) {
-
+    public location_data( String img, Float lat, Float lon, String place, String state) {
+        this.img = img;
         this.lat = lat;
         this.lon = lon;
         this.place = place;
         this.state = state;
     }
 
+    public String getImg() { return img; }
 
     public Float getLat() {
         return lat;
