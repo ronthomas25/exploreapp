@@ -1,6 +1,8 @@
 package com.ron.exploreapp;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -202,6 +204,7 @@ public class MainActivity extends BaseActivity{
                startActivity(intent1);
            }
        });
+
 
    }
 
