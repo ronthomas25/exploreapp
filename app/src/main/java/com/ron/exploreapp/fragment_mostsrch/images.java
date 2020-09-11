@@ -1,14 +1,29 @@
 package com.ron.exploreapp.fragment_mostsrch;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.GridView;
+import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.ron.exploreapp.R;
+import com.ron.exploreapp.adapter.gridview_adapter;
+import com.ron.exploreapp.gridview_image_activity;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -60,7 +75,39 @@ public class images extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_images, container, false);
+        final View view=inflater.inflate(R.layout.fragment_images, container, false);
+        Bundle bundle=getArguments();
+        String place=bundle.getString("name");
+        final GridView gridView=view.findViewById(R.id.gridview);
+
+        DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference().child("mostsearchedplace").child(place.toLowerCase()).child("grid_images");
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                final List<String> imagelist=new ArrayList<>();
+                for(DataSnapshot data:snapshot.getChildren()){
+                    imagelist.add(data.getValue(String.class));
+                }
+                gridview_adapter adapter=new gridview_adapter(getContext(),imagelist);
+                gridView.setAdapter(adapter);
+                gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Intent intent=new Intent(getContext(), gridview_image_activity.class);
+                        intent.putExtra("image",imagelist.get(position));
+                        startActivity(intent);
+                    }
+                });
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+
+        });
+
+
+        return view;
     }
 }

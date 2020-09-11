@@ -1,6 +1,5 @@
 package com.ron.exploreapp.model_data;
 
-import com.bumptech.glide.load.model.FileLoader;
 
 public class most_srcd_firebasedata {
    String desc;
@@ -24,6 +23,7 @@ public class most_srcd_firebasedata {
         this.rating = rating;
         this.state = state;
     }
+
 
     public String getDesc() {
         return desc;

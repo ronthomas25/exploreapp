@@ -53,7 +53,7 @@ public class mostsearched_activity extends AppCompatActivity {
         lat=mostsearchedData.get(pos).getLat();
         lon=mostsearchedData.get(pos).getLon();
         uri="geo:"+lat+","+lon+"?q="+lat+","+lon+"";
-        fragadapter(desc);
+        fragadapter(desc,mostsearchedData.get(pos).getPlace());
         gps.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,12 +64,13 @@ public class mostsearched_activity extends AppCompatActivity {
 
 
 
+
     }
-    public void fragadapter(String desc)
+    public void fragadapter(String desc,String place)
     {
         tabLayout=findViewById(R.id.tablayout);
         viewPager=findViewById(R.id.viewpager);
-        frag_mostsrc_adapter fragMostsrcAdapter=new frag_mostsrc_adapter(getSupportFragmentManager(), tabLayout.getTabCount(),desc);
+        frag_mostsrc_adapter fragMostsrcAdapter=new frag_mostsrc_adapter(getSupportFragmentManager(), tabLayout.getTabCount(),desc,place);
         viewPager.setAdapter(fragMostsrcAdapter);
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override

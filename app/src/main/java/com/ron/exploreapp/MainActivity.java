@@ -35,20 +35,11 @@ import java.util.List;
 public class MainActivity extends BaseActivity{
 
     RecyclerView rest_recyclerview, mostsearched_recyclerview;
-   int munnar_img[] = {R.drawable.munnar, R.drawable.munnarinner};
-    int wayanad_img[] = {R.drawable.wayanad, R.drawable.wayanadinner};
-    int vagamon_img[] = {R.drawable.vagamon, R.drawable.vagamoninner};
-    /* int kochi_img[] = {R.drawable.kochi, R.drawable.kochi2};
-   int alp_img[] = {R.drawable.alp, R.drawable.alp2};
-   int kumarakom_img[] = {R.drawable.kumarakom, R.drawable.kumarakom2};
-   int kovalam_img[] = {R.drawable.kovalam, R.drawable.kovalam2};
-   int varkala_img[] = {R.drawable.varkala, R.drawable.varkala2};
-   int paragon_img[] = {R.drawable.paragonlogo, R.drawable.paragonlogo};
-   int thakkaram_img[] = {R.drawable.thakkaram, R.drawable.thakkaram};
-   int koco_img[] = {R.drawable.koco, R.drawable.koco};
-   int chayakkada_img[] = {R.drawable.chayakkada1, R.drawable.chayakkada1};*/
     ImageView loc_search;
     DatabaseReference databaseReference;
+
+
+    List<String> image_list;
 
 
 
@@ -90,12 +81,6 @@ public class MainActivity extends BaseActivity{
             }
         });
 
-       /* List<SlideModel> slideModels=new ArrayList<>();
-        ImageSlider imageSlider=findViewById(R.id.slider);
-        slideModels.add(new SlideModel(R.drawable.munnar));
-        slideModels.add(new SlideModel(R.drawable.wayanad));
-        slideModels.add(new SlideModel(R.drawable.vagamon));
-        imageSlider.setImageList(slideModels,true);*/
 
 
 
@@ -114,9 +99,9 @@ public class MainActivity extends BaseActivity{
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
+
 
         databaseReference=FirebaseDatabase.getInstance().getReference().child("restaurent");
         databaseReference.addValueEventListener(new ValueEventListener() {
