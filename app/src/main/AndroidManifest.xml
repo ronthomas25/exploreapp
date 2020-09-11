@@ -10,7 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".loc_search_activity"></activity>
+        <activity android:name=".gridview_image_activity"></activity>
+        <activity android:name=".loc_search_activity" />
         <activity android:name=".search_loc" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".rest_firebase_activity" />

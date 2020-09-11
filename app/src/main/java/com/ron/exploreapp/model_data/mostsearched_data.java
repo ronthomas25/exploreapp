@@ -1,5 +1,6 @@
 package com.ron.exploreapp.model_data;
 import java.io.Serializable;
+import java.util.List;
 
 public class mostsearched_data implements Serializable {
 

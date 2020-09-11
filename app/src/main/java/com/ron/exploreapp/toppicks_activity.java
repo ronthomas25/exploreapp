@@ -65,14 +65,14 @@ public class toppicks_activity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        fragadapter(desc);
+      //  fragadapter(desc);
     }
 
-    public void fragadapter(String desc)
+  /*  public void fragadapter(String desc)
     {
             tabLayout=findViewById(R.id.tablayout);
             viewPager=findViewById(R.id.viewpager);
-            frag_mostsrc_adapter fragMostsrcAdapter=new frag_mostsrc_adapter(getSupportFragmentManager(),tabLayout.getTabCount(),desc);
+            //frag_mostsrc_adapter fragMostsrcAdapter=new frag_mostsrc_adapter(getSupportFragmentManager(),tabLayout.getTabCount(),desc,);
             viewPager.setAdapter(fragMostsrcAdapter);
             tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
                 @Override
@@ -92,7 +92,7 @@ public class toppicks_activity extends AppCompatActivity {
             });
             viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
-    }
+    }*/
 
 
 }

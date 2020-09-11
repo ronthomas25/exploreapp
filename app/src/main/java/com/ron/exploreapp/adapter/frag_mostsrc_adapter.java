@@ -11,14 +11,19 @@ import com.ron.exploreapp.fragment_mostsrch.images;
 import com.ron.exploreapp.fragment_mostsrch.overview;
 import com.ron.exploreapp.fragment_mostsrch.review;
 
+import java.io.Serializable;
+import java.util.List;
+
 public class frag_mostsrc_adapter extends FragmentPagerAdapter {
     @NonNull
     int no_tab;
     String desc;
-    public frag_mostsrc_adapter(@NonNull FragmentManager fm, int no_tab, String desc) {
+    String place;
+    public frag_mostsrc_adapter(@NonNull FragmentManager fm, int no_tab, String desc,String place) {
         super(fm);
         this.no_tab = no_tab;
         this.desc=desc;
+        this.place=place;
     }
 
     public Fragment getItem(int position) {
@@ -30,6 +35,9 @@ public class frag_mostsrc_adapter extends FragmentPagerAdapter {
                    overview.setArguments(bundle);
                    return overview;
            case 1: images images=new images();
+                   Bundle bundle2=new Bundle();
+                   bundle2.putString("name",place);
+                   images.setArguments(bundle2);
                    return images;
            case 2: review  review=new review();
                    return review;
