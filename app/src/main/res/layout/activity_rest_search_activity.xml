@@ -40,7 +40,6 @@
                     android:src="@drawable/ic_launcher_background" />
 
 
-
             </androidx.cardview.widget.CardView>
 
 

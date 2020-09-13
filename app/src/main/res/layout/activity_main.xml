@@ -9,10 +9,6 @@
     tools:context=".MainActivity"
     tools:ignore="NotSibling">
 
-
-
-
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -24,28 +20,25 @@
          android:layout_width="match_parent"
          android:layout_height="match_parent" >
 
-
-
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Discover"
-        android:textColor="#000000"
-        android:id="@+id/discover"
-        android:textStyle="bold"
-        android:paddingLeft="10dp"
-        android:paddingTop="10dp"
-        android:textSize="30sp" />
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="Discover"
+             android:textColor="#000000"
+             android:id="@+id/discover"
+             android:textStyle="bold"
+             android:paddingLeft="10dp"
+             android:paddingTop="15dp"
+             android:textSize="30sp" />
 
          <ImageView
              android:id="@+id/loc_search"
-             android:layout_width="63dp"
-             android:layout_height="40dp"
-             android:src="@drawable/location_icon"
+             android:layout_width="59dp"
+             android:layout_height="48dp"
              android:layout_alignParentRight="true"
-             android:layout_marginTop="5dp"
+             android:layout_marginTop="28dp"
              android:onClick="onClick"
+             android:src="@drawable/location_icon"
              tools:ignore="OnClick" />
 
         <TextView
@@ -56,7 +49,7 @@
         android:id="@+id/top_picks"
         android:textSize="17sp"
         android:paddingLeft="10dp"
-        android:paddingTop="5dp"
+        android:paddingTop="15dp"
         android:layout_below="@id/discover"
         tools:ignore="InvalidId" />
 
@@ -71,8 +64,8 @@
                 android:id="@+id/slider"
                 android:layout_width="wrap_content"
                 android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginTop="3dp"
+                android:layout_marginRight="3dp"
+                android:layout_marginTop="8dp"
                 android:layout_height="215dp"
                 app:placeholder="@drawable/backimgtoppicks"
                 app:error_image="@drawable/backimgtoppicks"
@@ -107,7 +100,7 @@
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:layout_below="@id/most_searched_recycler"
-             android:layout_marginTop="20dp"
+             android:layout_marginTop="15dp"
              android:layout_marginLeft="10dp"
              android:paddingTop="1dp"
              android:text="Popular Restaurants"
@@ -120,9 +113,8 @@
              android:layout_height="wrap_content"
              android:layout_below="@+id/popular_restaurants"
              android:paddingLeft="10dp"
-             android:paddingRight="10dp"
-             android:layout_marginTop="4dp"
-             android:layout_marginBottom="12dp" />
+             android:layout_marginTop="8dp"
+             android:layout_marginBottom="100dp" />
 
          <androidx.recyclerview.widget.RecyclerView
              android:id="@+id/most_searched_recycler"
@@ -130,18 +122,13 @@
              android:layout_height="wrap_content"
              android:layout_below="@+id/most_searched_places"
              android:paddingLeft="10dp"
-             android:paddingRight="10dp"
              android:layout_marginTop="4dp" />
 
 
      </RelativeLayout>
 
-
     </ScrollView>
-
-
-
-          <include
+         <include
               layout="@layout/item_bottom_navigation"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"

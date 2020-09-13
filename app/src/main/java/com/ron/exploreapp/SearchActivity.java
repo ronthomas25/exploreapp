@@ -22,6 +22,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.ron.exploreapp.model_data.rest_firebasedata;
+import com.ron.exploreapp.model_data.search_rest_data;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SearchActivity extends BaseActivity {
 
@@ -86,17 +91,23 @@ public class SearchActivity extends BaseActivity {
             protected void onBindViewHolder(@NonNull viewholder holder, int position, @NonNull final rest_firebasedata model) {
                 Glide.with(getApplicationContext()).load(model.getImage()).into(holder.image);
                 holder.place.setText(model.getPlace());
-                holder.image.setOnClickListener(new View.OnClickListener() {
+                holder.place.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                     Intent i=new Intent(SearchActivity.this,rest_firebase_activity.class);
-                     i.putExtra("desc",model.getDesc());
+                     Intent i=new Intent(SearchActivity.this,rest_search_activity.class);
+                     List<search_rest_data> searchRestData=new ArrayList<>();
+                     searchRestData.add(new search_rest_data(model.getDesc(),model.getImage(),model.getImageInner(),model.getLat(),model.getLon(),
+                                                 model.getPlace(),model.getRating(),model.getState()));
+                     Bundle bundle=new Bundle();
+                     bundle.putSerializable("data", (Serializable) searchRestData);
+                     i.putExtras(bundle);
+                    /* i.putExtra("desc",model.getDesc());
                      i.putExtra("place",model.getPlace());
                      i.putExtra("image",model.getImage());
                      i.putExtra("lat",model.getLat());
                      i.putExtra("lon",model.getLon());
                      i.putExtra("rating",model.getRating());
-                     i.putExtra("state",model.getState());
+                     i.putExtra("state",model.getState());*/
                      startActivity(i);
                     }
                 });

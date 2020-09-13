@@ -39,7 +39,7 @@ public class rest_adapter extends RecyclerView.Adapter<rest_adapter.rest_viewhol
 
     @Override
     public void onBindViewHolder(@NonNull rest_viewholder holder, final int position) {
-        Glide.with(context).load(restaurentDataList.get(position).getImg()).dontTransform().diskCacheStrategy(DiskCacheStrategy.ALL).into(holder.rest_image);
+        Glide.with(context).load(restaurentDataList.get(position).getImage()).dontTransform().diskCacheStrategy(DiskCacheStrategy.ALL).into(holder.rest_image);
         holder.rest_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

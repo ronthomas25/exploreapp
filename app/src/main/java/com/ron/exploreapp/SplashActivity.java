@@ -1,10 +1,20 @@
 package com.ron.exploreapp;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
+import android.widget.Toast;
+
+import java.util.TimerTask;
+
+import static java.lang.System.exit;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -15,14 +25,41 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
+
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
 
-                Intent intent = new Intent(SplashActivity.this, SignUpActivity.class);
-                startActivity(intent);
-                finish();
-            }
+                boolean  conn=isconnected(getApplicationContext());
+                if(conn == true) {
+                    Intent intent = new Intent(SplashActivity.this, SignUpActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+                else {
+                    Toast.makeText(getApplicationContext(), "No Internet Connection", Toast.LENGTH_LONG).show();
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            exit(0);
+                        }
+                    },2000);
+                }
+             }
         },SPLASH_TIME_OUT);
     }
+
+    private boolean isconnected(Context context){
+        ConnectivityManager connectivityManager= (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo wifi=connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+        NetworkInfo mob=connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+
+        if((wifi !=null && wifi.isConnected()) || (mob!=null && mob.isConnected())) {
+            return true;
+        }
+        else{
+             return false;
+            }
+
+        }
 }

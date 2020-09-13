@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.ron.exploreapp">
-
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,11 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".gridview_image_activity"></activity>
+        <activity android:name=".rest_search_activity"></activity>
+        <activity android:name=".gridview_image_activity" />
         <activity android:name=".loc_search_activity" />
         <activity android:name=".search_loc" />
         <activity android:name=".SignUpActivity" />
-        <activity android:name=".rest_firebase_activity" />
         <activity android:name=".AccountActivity" />
         <activity android:name=".LogInActivity" />
         <activity android:name=".MainActivity" />

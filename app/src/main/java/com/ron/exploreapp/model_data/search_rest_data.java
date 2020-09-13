@@ -2,19 +2,19 @@ package com.ron.exploreapp.model_data;
 
 import java.io.Serializable;
 
-public class rest_firebasedata implements Serializable {
-  String desc;
-  String image;
-  String imageinner;
-  float lat;
-  float lon;
-  String place;
-  float rating;
-  String state;
+public class search_rest_data implements Serializable {
+    String desc;
+    String image;
+    String imageinner;
+    float lat;
+    float lon;
+    String place;
+    float rating;
+    String state;
 
-  public rest_firebasedata(){ }
+    public search_rest_data(){ }
 
-    public rest_firebasedata(String desc, String image, String imageinner, float lat, float lon, String place, float rating, String state) {
+    public search_rest_data(String desc, String image, String imageinner, float lat, float lon, String place, float rating, String state) {
         this.desc = desc;
         this.image = image;
         this.imageinner = imageinner;
@@ -64,4 +64,5 @@ public class rest_firebasedata implements Serializable {
     public String getState() {
         return state;
     }
+
 }

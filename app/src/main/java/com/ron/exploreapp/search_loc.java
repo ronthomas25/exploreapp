@@ -84,7 +84,7 @@ public class search_loc extends AppCompatActivity {
             protected void onBindViewHolder(@NonNull viewholder holder, final int position, @NonNull final loc_search_firebasedata model) {
                 Glide.with(getApplicationContext()).load(model.getImg()).into(holder.image);
                 holder.place.setText(model.getPlace());
-                holder.image.setOnClickListener(new View.OnClickListener() {
+                holder.place.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Intent i=new Intent(search_loc.this,loc_search_activity.class);
