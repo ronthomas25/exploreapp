@@ -109,7 +109,7 @@ public class MainActivity extends BaseActivity{
                 List<popular_restaurent_data> restaurentDataList=new ArrayList<>();
                 for(DataSnapshot data:snapshot.getChildren()){
                     rest_firebasedata rest_modeldata=data.getValue(rest_firebasedata.class);
-                    restaurentDataList.add(new popular_restaurent_data(rest_modeldata.getImage(),rest_modeldata.getImageInner(),rest_modeldata.getPlace(),rest_modeldata.getDesc(),rest_modeldata.getRating(),rest_modeldata.getLat(),rest_modeldata.getLon(),rest_modeldata.getState()));
+                    restaurentDataList.add(new popular_restaurent_data(rest_modeldata.getDesc(),rest_modeldata.getImage(),rest_modeldata.getImageInner(),rest_modeldata.getLat(),rest_modeldata.getLon(),rest_modeldata.getPlace(),rest_modeldata.getRating(),rest_modeldata.getState()));
                 }
                 restaurent_recycler(restaurentDataList);
             }

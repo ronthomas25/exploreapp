@@ -3,84 +3,66 @@ package com.ron.exploreapp.model_data;
 import java.io.Serializable;
 
 public class popular_restaurent_data implements Serializable {
-    String img;
-    String imginner;
-    String placename;
     String desc;
+    String image;
+    String imageinner;
+    float lat;
+    float lon;
+    String place;
     float rating;
-    float lat,lon;
     String state;
 
-    public popular_restaurent_data(){}
-
-
-        public popular_restaurent_data(String img, String imginner, String placename, String desc, double rating, double lat, double lon, String state) {
-            this.img = img;
-            this.imginner = imginner;
-            this.placename = placename;
-            this.desc = desc;
-            this.rating = (float) rating;
-            this.lat = (float) lat;
-            this.lon = (float) lon;
-            this.state = state;
-
-        }
-
-        public float getLat() {
-            return lat;
-        }
-
-        public void setLat(float lat) {
-            this.lat = lat;
-        }
-
-        public float getLon() {
-            return lon;
-        }
-
-        public void setLon(float lon) {
-            this.lon = lon;
-        }
-
-        public String getState() {
-            return state;
-        }
-
-        public void setState(String state) {
-            this.state = state;
-        }
-
-
-        public float getRating() {
-            return rating;
-        }
-
-        public void setRating(float rating) {
-            this.rating = rating;
-        }
-
-        public String getDesc() {
-            return desc;
-        }
-
-        public void setDesc(String desc) {
-            this.desc = desc;
-        }
-
-        public String getImg() {
-            return img;
-        }
-
-         public String getImgInner() {
-        return imginner;
+    public popular_restaurent_data() {
     }
 
-        public String getPlacename() {
-            return placename;
-        }
-
-        public void setPlacename(String placename) {
-            this.placename = placename;
-        }
+    public popular_restaurent_data(String desc, String image, String imageinner, float lat, float lon, String place, float rating, String state) {
+        this.desc = desc;
+        this.image = image;
+        this.imageinner = imageinner;
+        this.lat = lat;
+        this.lon = lon;
+        this.place = place;
+        this.rating = rating;
+        this.state = state;
     }
 
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public String getImageInner() {
+        return imageinner;
+    }
+
+    public float getLat() {
+        return lat;
+    }
+
+    public float getLon() {
+        return lon;
+    }
+
+    public String getPlace() {
+        return place;
+    }
+
+    public float getRating() {
+        return rating;
+    }
+
+    public void setRating(float rating) {
+        this.rating = rating;
+    }
+
+    public String getState() {
+        return state;
+    }
+}

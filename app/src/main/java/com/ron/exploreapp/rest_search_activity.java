@@ -10,14 +10,20 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.tabs.TabLayout;
 import com.ron.exploreapp.adapter.frag_rest_adapter;
+import com.ron.exploreapp.model_data.popular_restaurent_data;
+import com.ron.exploreapp.model_data.search_rest_data;
 
-public class rest_firebase_activity extends AppCompatActivity {
-    String desc,uri,url;
+import java.util.List;
+
+public class rest_search_activity extends AppCompatActivity {
+
+    String desc,uri,place;
     TextView rating,state;
     int pos;
     float lat,lon;
@@ -29,8 +35,7 @@ public class rest_firebase_activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_rest_firebase_activity);
-
+        setContentView(R.layout.activity_rest_activity);
         img=findViewById(R.id.placeimg);
         state=findViewById(R.id.state);
         ratingBar=findViewById(R.id.ratingBar);
@@ -38,21 +43,21 @@ public class rest_firebase_activity extends AppCompatActivity {
         gps=findViewById(R.id.gps_icon);
         CollapsingToolbarLayout collapsingToolbarLayout=findViewById(R.id.collapsinglayout);
 
-      /*  Bundle bundle= getIntent().getExtras();
-        List<sample_firebasedata> restaurentData=(List<sample_firebasedata>)bundle.getSerializable("data");
-        pos=getIntent().getIntExtra("pos",0);*/
+        Bundle bundle= getIntent().getExtras();
+        List<search_rest_data> restaurentData=(List<search_rest_data>)bundle.getSerializable("data");
+        int pos=0;
 
-        Intent i=getIntent();
-        collapsingToolbarLayout.setTitle(i.getStringExtra("place"));
-        Glide.with(getApplicationContext()).load(i.getStringExtra("image")).into(img);
-        desc=i.getStringExtra("desc");
-        state.setText(i.getStringExtra("state"));
-        ratingBar.setRating(i.getFloatExtra("rating",0));
-        rating.setText(i.getFloatExtra("rating",0)+"");
-        lat=i.getFloatExtra("lat",0);
-        lon=i.getFloatExtra("lon",0);
+        collapsingToolbarLayout.setTitle(restaurentData.get(pos).getPlace());
+        Glide.with(getApplicationContext()).load(restaurentData.get(pos).getImageInner()).into(img);
+        desc=restaurentData.get(pos).getDesc();
+        state.setText(restaurentData.get(pos).getState());
+        ratingBar.setRating(restaurentData.get(pos).getRating());
+        rating.setText(restaurentData.get(pos).getRating()+"");
+        lat=restaurentData.get(pos).getLat();
+        lon=restaurentData.get(pos).getLon();
         uri="geo:"+lat+","+lon+"?q="+lat+","+lon+"";
-        fragadapter(desc);
+        place=restaurentData.get(pos).getPlace();
+        Toast.makeText(getApplicationContext(),place.toLowerCase(),Toast.LENGTH_SHORT).show();
         gps.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,16 +65,16 @@ public class rest_firebase_activity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+        fragadapter(desc,place);
 
 
 
     }
-    public void fragadapter(String desc)
+    public void fragadapter(String desc,String place)
     {
         tabLayout=findViewById(R.id.tablayout);
         viewPager=findViewById(R.id.viewpager);
-
-        frag_rest_adapter fragRestAdapter=new frag_rest_adapter(getSupportFragmentManager(), tabLayout.getTabCount(),desc);
+        frag_rest_adapter fragRestAdapter=new frag_rest_adapter(getSupportFragmentManager(), tabLayout.getTabCount(),desc,place);
         viewPager.setAdapter(fragRestAdapter);
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -91,7 +96,4 @@ public class rest_firebase_activity extends AppCompatActivity {
 
 
     }
-
-
-
 }

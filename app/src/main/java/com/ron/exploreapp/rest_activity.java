@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
@@ -20,7 +21,7 @@ import com.ron.exploreapp.model_data.popular_restaurent_data;
 import java.util.List;
 
 public class rest_activity extends AppCompatActivity {
-    String desc,uri;
+    String desc,uri,place;
     TextView rating,state;
     int pos;
     float lat,lon;
@@ -44,8 +45,8 @@ public class rest_activity extends AppCompatActivity {
         List<popular_restaurent_data> restaurentData=(List<popular_restaurent_data>)bundle.getSerializable("data");
         pos=getIntent().getIntExtra("pos",0);
 
-        collapsingToolbarLayout.setTitle(restaurentData.get(pos).getPlacename());
-        Glide.with(getApplicationContext()).load(restaurentData.get(pos).getImgInner()).into(img);
+        collapsingToolbarLayout.setTitle(restaurentData.get(pos).getPlace());
+        Glide.with(getApplicationContext()).load(restaurentData.get(pos).getImageInner()).into(img);
         desc=restaurentData.get(pos).getDesc();
         state.setText(restaurentData.get(pos).getState());
         ratingBar.setRating(restaurentData.get(pos).getRating());
@@ -53,7 +54,8 @@ public class rest_activity extends AppCompatActivity {
         lat=restaurentData.get(pos).getLat();
         lon=restaurentData.get(pos).getLon();
         uri="geo:"+lat+","+lon+"?q="+lat+","+lon+"";
-        fragadapter(desc);
+        place=restaurentData.get(pos).getPlace();
+        Toast.makeText(getApplicationContext(),place.toLowerCase(),Toast.LENGTH_SHORT).show();
         gps.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,16 +63,16 @@ public class rest_activity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
+        fragadapter(desc,place);
 
 
 
     }
-    public void fragadapter(String desc)
+    public void fragadapter(String desc,String place)
     {
         tabLayout=findViewById(R.id.tablayout);
         viewPager=findViewById(R.id.viewpager);
-        frag_rest_adapter fragRestAdapter=new frag_rest_adapter(getSupportFragmentManager(), tabLayout.getTabCount(),desc);
+        frag_rest_adapter fragRestAdapter=new frag_rest_adapter(getSupportFragmentManager(), tabLayout.getTabCount(),desc,place);
         viewPager.setAdapter(fragRestAdapter);
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override

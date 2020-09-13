@@ -18,25 +18,32 @@
 
     <EditText
         android:id="@+id/searchbar"
-        android:layout_width="290dp"
+        android:layout_width="300dp"
         android:layout_height="50dp"
         android:background="@drawable/searchbar_bg"
         android:layout_marginTop="40dp"
-        android:layout_marginLeft="24dp"
+        android:layout_marginLeft="32dp"
         android:hint="SEARCH RESTAURANTS"
         android:paddingLeft="20dp"
         android:inputType="text"/>
 
 
+    <ScrollView
+        android:layout_below="@+id/searchbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"
-        android:layout_width="394dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/searchbar"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="38dp"
         android:paddingLeft="10dp" />
 
+
+    </ScrollView>
 
 </RelativeLayout>
