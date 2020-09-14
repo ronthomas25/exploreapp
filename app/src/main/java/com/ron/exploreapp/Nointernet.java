@@ -1,48 +1,44 @@
 package com.ron.exploreapp;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.os.Handler;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
-import java.util.TimerTask;
+public class Nointernet extends AppCompatActivity {
 
-import static java.lang.System.exit;
 
-public class SplashActivity extends AppCompatActivity {
 
-    private static int SPLASH_TIME_OUT = 3000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash);
+        setContentView(R.layout.activity_nointernet);
 
-
-        new Handler().postDelayed(new Runnable() {
+         @SuppressLint("WrongViewCast") Button button =  findViewById(R.id.retrybutton);
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void run() {
-
+            public void onClick(View v) {
                 boolean  conn=isconnected(getApplicationContext());
                 if(conn == true) {
-                    Intent intent = new Intent(SplashActivity.this, SignUpActivity.class);
+                    Intent intent = new Intent(Nointernet.this, MainActivity.class);
                     startActivity(intent);
                     finish();
                 }
                 else {
-                    Intent intent1 = new Intent(SplashActivity.this, Nointernet.class);
-                    startActivity(intent1);
-                    finish();
+                    Toast.makeText(Nointernet.this, "No Internet Connection", Toast.LENGTH_SHORT).show();
                 }
-             }
-        },SPLASH_TIME_OUT);
+
+            }
+        });
     }
 
     private boolean isconnected(Context context){
@@ -54,8 +50,9 @@ public class SplashActivity extends AppCompatActivity {
             return true;
         }
         else{
-             return false;
-            }
-
+            return false;
         }
+
+    }
+
 }

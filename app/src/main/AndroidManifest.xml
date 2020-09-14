@@ -13,6 +13,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".rest_search_activity"></activity>
         <activity android:name=".gridview_image_activity" />
+        <activity android:name=".Nointernet" />
         <activity android:name=".loc_search_activity" />
         <activity android:name=".search_loc" />
         <activity android:name=".SignUpActivity" />

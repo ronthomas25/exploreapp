@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Nointernet">
+
+
+<ImageView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:src="@drawable/backgroundimage"
+    android:scaleType="fitXY" >
+
+</ImageView>
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/nointernetimage"
+        android:layout_centerInParent="true"
+        android:id="@+id/no_internet"
+        tools:ignore="MissingConstraints">
+
+
+    </ImageView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="NO INTERNET CONNECTION."
+        android:layout_below="@+id/no_internet"
+        android:layout_centerInParent="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="-190dp"
+        android:id="@+id/nointernet_text"
+        tools:ignore="InvalidId" />
+
+
+    <Button
+        android:id="@+id/retrybutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nointernet_text"
+        android:layout_centerInParent="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="36dp"
+        android:onClick="onclick"
+        android:text="RETRY"
+        tools:ignore="OnClick,UnknownId" />
+
+
+</RelativeLayout>
