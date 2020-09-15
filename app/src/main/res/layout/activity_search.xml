@@ -25,7 +25,8 @@
         android:layout_marginLeft="32dp"
         android:hint="SEARCH RESTAURANTS"
         android:paddingLeft="20dp"
-        android:inputType="text"/>
+        android:inputType="text"
+        android:imeOptions="actionSearch"/>
 
 
     <ScrollView
