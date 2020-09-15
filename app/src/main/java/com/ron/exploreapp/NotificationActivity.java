@@ -3,6 +3,7 @@ package com.ron.exploreapp;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
@@ -55,4 +56,14 @@ public class NotificationActivity extends BaseActivity {
         super.onStop();
         adapter.stopListening();
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(NotificationActivity.this,MainActivity.class);
+        startActivity(intent);
+    }
+
+
+
 }

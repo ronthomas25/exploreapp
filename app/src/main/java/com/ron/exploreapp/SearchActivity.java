@@ -135,4 +135,11 @@ public class SearchActivity extends BaseActivity {
             place=itemView.findViewById(R.id.name);
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(SearchActivity.this,MainActivity.class);
+        startActivity(intent);
+    }
 }

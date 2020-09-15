@@ -55,7 +55,6 @@ public class rest_activity extends AppCompatActivity {
         lon=restaurentData.get(pos).getLon();
         uri="geo:"+lat+","+lon+"?q="+lat+","+lon+"";
         place=restaurentData.get(pos).getPlace();
-        Toast.makeText(getApplicationContext(),place.toLowerCase(),Toast.LENGTH_SHORT).show();
         gps.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

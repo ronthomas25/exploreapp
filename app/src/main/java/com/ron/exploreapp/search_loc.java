@@ -122,4 +122,6 @@ public class search_loc extends AppCompatActivity {
             place=itemView.findViewById(R.id.name);
         }
     }
+
+
 }

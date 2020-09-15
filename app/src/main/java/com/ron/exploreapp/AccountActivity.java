@@ -43,6 +43,11 @@ public class AccountActivity extends BaseActivity {
     }
 
 
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(AccountActivity.this,MainActivity.class);
+        startActivity(intent);
+    }
 
 }
