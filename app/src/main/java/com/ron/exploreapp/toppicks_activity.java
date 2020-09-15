@@ -37,7 +37,7 @@ public class toppicks_activity extends AppCompatActivity {
         int pos;
         float lat,lon;
         final String uri;
-        String desc;
+        String desc,place;
 
         collapsingToolbarLayout=findViewById(R.id.collapsinglayout);
         placeimg=findViewById(R.id.placeimg);
@@ -65,14 +65,15 @@ public class toppicks_activity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-      //  fragadapter(desc);
+        place=topPicksDataList.get(pos).getPlace();
+        fragadapter(desc,place);
     }
 
-  /*  public void fragadapter(String desc)
+    public void fragadapter(String desc,String place)
     {
             tabLayout=findViewById(R.id.tablayout);
             viewPager=findViewById(R.id.viewpager);
-            //frag_mostsrc_adapter fragMostsrcAdapter=new frag_mostsrc_adapter(getSupportFragmentManager(),tabLayout.getTabCount(),desc,);
+            frag_mostsrc_adapter fragMostsrcAdapter=new frag_mostsrc_adapter(getSupportFragmentManager(),tabLayout.getTabCount(),desc,place);
             viewPager.setAdapter(fragMostsrcAdapter);
             tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
                 @Override
@@ -92,7 +93,7 @@ public class toppicks_activity extends AppCompatActivity {
             });
             viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
-    }*/
+    }
 
 
 }
