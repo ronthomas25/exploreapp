@@ -41,7 +41,6 @@ public class SignUpActivity extends AppCompatActivity {
 
             }
 
-
             mFirebaseAuth = FirebaseAuth.getInstance();
             emailId = findViewById(R.id.editText);
             password = findViewById(R.id.editText2);
@@ -89,6 +88,7 @@ public class SignUpActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     Intent i = new Intent(SignUpActivity.this,LogInActivity.class);
                     startActivity(i);
+                    finish();
                 }
             });
         }
