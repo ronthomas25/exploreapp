@@ -41,7 +41,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/searchbar"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="38dp"
+        android:layout_marginBottom="50dp"
+        android:paddingBottom="60dp"
         android:paddingLeft="10dp" />
 
 
