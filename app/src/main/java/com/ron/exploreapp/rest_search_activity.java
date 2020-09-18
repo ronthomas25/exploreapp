@@ -16,6 +16,7 @@ import com.bumptech.glide.Glide;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.tabs.TabLayout;
 import com.ron.exploreapp.adapter.frag_rest_adapter;
+import com.ron.exploreapp.adapter.frag_search_rest_adapter;
 import com.ron.exploreapp.model_data.popular_restaurent_data;
 import com.ron.exploreapp.model_data.search_rest_data;
 
@@ -73,7 +74,7 @@ public class rest_search_activity extends AppCompatActivity {
     {
         tabLayout=findViewById(R.id.tablayout);
         viewPager=findViewById(R.id.viewpager);
-        frag_rest_adapter fragRestAdapter=new frag_rest_adapter(getSupportFragmentManager(), tabLayout.getTabCount(),desc,place);
+        frag_search_rest_adapter fragRestAdapter=new frag_search_rest_adapter(getSupportFragmentManager(), tabLayout.getTabCount(),desc,place);
         viewPager.setAdapter(fragRestAdapter);
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
