@@ -4,17 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/ic_splashbg"
     tools:context=".SplashActivity">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:src="@drawable/logo"
-        android:textSize="50sp"
-        android:textColor="#000000"
-        android:textStyle="bold"
-        android:layout_centerInParent="true"
-        tools:ignore="MissingConstraints" />
 
 </RelativeLayout>
