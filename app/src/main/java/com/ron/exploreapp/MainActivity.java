@@ -38,21 +38,17 @@ public class MainActivity extends BaseActivity{
     ImageView loc_search;
     DatabaseReference databaseReference;
 
-
-    List<String> image_list;
-
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        loc_search=findViewById(R.id.loc_search);
+
+        loc_search = (ImageView) findViewById(R.id.loc_search);
+        loc_search.bringToFront();
         loc_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent1 = new Intent(MainActivity.this, search_loc.class);
+                startActivity(intent1);
             }
         });
 
@@ -81,9 +77,6 @@ public class MainActivity extends BaseActivity{
             }
         });
 
-
-
-
         databaseReference=FirebaseDatabase.getInstance().getReference().child("mostsearchedplace");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -111,7 +104,8 @@ public class MainActivity extends BaseActivity{
                 List<popular_restaurent_data> restaurentDataList=new ArrayList<>();
                 for(DataSnapshot data:snapshot.getChildren()){
                     rest_firebasedata rest_modeldata=data.getValue(rest_firebasedata.class);
-                    restaurentDataList.add(new popular_restaurent_data(rest_modeldata.getDesc(),rest_modeldata.getImage(),rest_modeldata.getImageInner(),rest_modeldata.getLat(),rest_modeldata.getLon(),rest_modeldata.getPlace(),rest_modeldata.getRating(),rest_modeldata.getState()));
+                    restaurentDataList.add(new popular_restaurent_data(rest_modeldata.getDesc(),rest_modeldata.getImage(),rest_modeldata.getImageInner(),rest_modeldata.getLat(),
+                                                                 rest_modeldata.getLon(),rest_modeldata.getPlace(),rest_modeldata.getRating(),rest_modeldata.getState()));
                 }
                 restaurent_recycler(restaurentDataList);
             }
@@ -123,7 +117,7 @@ public class MainActivity extends BaseActivity{
         });
 
 
-      }
+    }
 
     @Override
     int getLayoutId() {
@@ -180,16 +174,6 @@ public class MainActivity extends BaseActivity{
                }
            }
        });
-       ImageView imageView = (ImageView) findViewById(R.id.loc_search);
-       imageView.bringToFront();
-       imageView.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               Intent intent1 = new Intent(MainActivity.this, search_loc.class);
-               startActivity(intent1);
-           }
-       });
-
 
    }
 

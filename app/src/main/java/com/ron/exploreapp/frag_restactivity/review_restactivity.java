@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment;
 
 import com.ron.exploreapp.R;
 
-public class review extends Fragment {
+public class review_restactivity extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -20,7 +20,7 @@ public class review extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public review() {
+    public review_restactivity() {
         // Required empty public constructor
     }
 
@@ -33,8 +33,8 @@ public class review extends Fragment {
      * @return A new instance of fragment review.
      */
     // TODO: Rename and change types and number of parameters
-    public static com.ron.exploreapp.frag_restactivity.review newInstance(String param1, String param2) {
-        com.ron.exploreapp.frag_restactivity.review fragment = new com.ron.exploreapp.frag_restactivity.review();
+    public static review_restactivity newInstance(String param1, String param2) {
+        review_restactivity fragment = new review_restactivity();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);

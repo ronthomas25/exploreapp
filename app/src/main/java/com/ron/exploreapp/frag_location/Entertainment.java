@@ -69,7 +69,6 @@ public class Entertainment extends Fragment {
         recyclerView = view.findViewById(R.id.loc_searh_rcyclr);
         Bundle bundle = getArguments();
         name = bundle.getString("placename");
-        Toast.makeText(getContext(), name, Toast.LENGTH_SHORT).show();
         databaseReference = FirebaseDatabase.getInstance().getReference().child("location").child(name.toLowerCase()).child("ent");
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setHasFixedSize(false);
