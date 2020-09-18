@@ -15,6 +15,7 @@ import com.bumptech.glide.Glide;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.tabs.TabLayout;
 import com.ron.exploreapp.adapter.frag_mostsrc_adapter;
+import com.ron.exploreapp.adapter.frag_toppicks_adapter;
 import com.ron.exploreapp.model_data.top_picks_data;
 
 import java.util.List;
@@ -31,7 +32,7 @@ public class toppicks_activity extends AppCompatActivity {
         setContentView(R.layout.activity_toppicks_activity);
 
         CollapsingToolbarLayout collapsingToolbarLayout;
-        ImageView placeimg,backbtn,gps;
+        ImageView placeimg,gps;
         TextView state,rating;
         RatingBar ratingBar;
         int pos;
@@ -73,8 +74,8 @@ public class toppicks_activity extends AppCompatActivity {
     {
             tabLayout=findViewById(R.id.tablayout);
             viewPager=findViewById(R.id.viewpager);
-            frag_mostsrc_adapter fragMostsrcAdapter=new frag_mostsrc_adapter(getSupportFragmentManager(),tabLayout.getTabCount(),desc,place);
-            viewPager.setAdapter(fragMostsrcAdapter);
+            frag_toppicks_adapter frag_toppicks_adapter=new frag_toppicks_adapter(getSupportFragmentManager(),tabLayout.getTabCount(),desc,place);
+            viewPager.setAdapter(frag_toppicks_adapter);
             tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
                 @Override
                 public void onTabSelected(TabLayout.Tab tab) {

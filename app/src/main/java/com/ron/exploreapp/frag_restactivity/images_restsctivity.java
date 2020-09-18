@@ -23,7 +23,7 @@ import com.ron.exploreapp.gridview_image_activity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class images extends Fragment {
+public class images_restsctivity extends Fragment {
 
 
     private static final String ARG_PARAM1 = "param1";
@@ -33,13 +33,13 @@ public class images extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public images() {
+    public images_restsctivity() {
 
     }
 
 
-    public static com.ron.exploreapp.frag_restactivity.images newInstance(String param1, String param2) {
-        com.ron.exploreapp.frag_restactivity.images fragment = new com.ron.exploreapp.frag_restactivity.images();
+    public static images_restsctivity newInstance(String param1, String param2) {
+        images_restsctivity fragment = new images_restsctivity();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);

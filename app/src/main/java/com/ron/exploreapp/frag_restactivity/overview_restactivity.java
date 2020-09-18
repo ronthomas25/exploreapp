@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment;
 
 import com.ron.exploreapp.R;
 
-public class overview extends Fragment {
+public class overview_restactivity extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,7 +21,7 @@ public class overview extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public overview() {
+    public overview_restactivity() {
         // Required empty public constructor
     }
 
@@ -34,8 +34,8 @@ public class overview extends Fragment {
      * @return A new instance of fragment overview.
      */
     // TODO: Rename and change types and number of parameters
-    public static com.ron.exploreapp.frag_restactivity.overview newInstance(String param1, String param2) {
-        com.ron.exploreapp.frag_restactivity.overview fragment = new com.ron.exploreapp.frag_restactivity.overview();
+    public static overview_restactivity newInstance(String param1, String param2) {
+        overview_restactivity fragment = new overview_restactivity();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
