@@ -21,7 +21,8 @@
     <ScrollView
         android:layout_below="@+id/searchbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:scrollbars="none">
 
         <androidx.recyclerview.widget.RecyclerView
            android:id="@+id/recyclerview"
@@ -29,7 +30,8 @@
            android:layout_height="wrap_content"
            android:layout_below="@+id/searchbar"
            android:layout_marginTop="10dp"
-           android:layout_marginBottom="38dp"
+           android:layout_marginBottom="45dp"
+            android:paddingBottom="5dp"
            android:paddingLeft="10dp" />
 
     </ScrollView>

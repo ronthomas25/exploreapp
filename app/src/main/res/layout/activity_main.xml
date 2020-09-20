@@ -65,15 +65,15 @@
                 android:id="@+id/slider"
                 android:layout_width="wrap_content"
                 android:layout_marginLeft="8dp"
-                android:layout_marginRight="3dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="15dp"
                 android:layout_height="215dp"
                 app:placeholder="@drawable/backimgtoppicks"
                 app:error_image="@drawable/backimgtoppicks"
                 app:auto_cycle="true"
                 app:corner_radius="20"
-                app:delay="0"
-                app:period="1000">
+                app:delay="1"
+                app:period="2000">
             </com.denzcoskun.imageslider.ImageSlider>
 
 
@@ -91,7 +91,7 @@
              android:layout_marginLeft="10dp"
              android:paddingTop="1dp"
              android:text="Most searched places"
-             android:layout_marginTop="20dp"
+             android:layout_marginTop="15dp"
              android:textColor="#030303"
              android:textSize="17sp"/>
 
@@ -109,6 +109,15 @@
              android:textSize="17sp" />
 
          <androidx.recyclerview.widget.RecyclerView
+             android:id="@+id/most_searched_recycler"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_below="@+id/most_searched_places"
+             android:paddingLeft="10dp"
+             android:layout_marginTop="8dp" />
+
+
+         <androidx.recyclerview.widget.RecyclerView
              android:id="@+id/restrecycler"
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
@@ -117,13 +126,6 @@
              android:layout_marginTop="8dp"
              android:layout_marginBottom="100dp" />
 
-         <androidx.recyclerview.widget.RecyclerView
-             android:id="@+id/most_searched_recycler"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_below="@+id/most_searched_places"
-             android:paddingLeft="10dp"
-             android:layout_marginTop="4dp" />
 
 
      </RelativeLayout>
