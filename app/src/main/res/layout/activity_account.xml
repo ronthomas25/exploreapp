@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/ic_newlogout"
     tools:context=".AccountActivity">
 
     <include
@@ -75,9 +76,10 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="150dp"
         android:text="Logout"
+        android:textColor="#FFFFFF"
         android:paddingStart="50dp"
         android:paddingEnd="50dp"
-        android:background="@drawable/custom_button"
+        android:background="@drawable/ic_rectanglelogout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
