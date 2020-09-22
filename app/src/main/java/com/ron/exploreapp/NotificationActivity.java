@@ -40,7 +40,7 @@ public class NotificationActivity extends BaseActivity {
         FirestoreRecyclerOptions<Notification> options = new FirestoreRecyclerOptions.Builder<Notification>()
                 .setQuery(query, Notification.class)
                 .build();
-        adapter = new NotificationAdapter(options);
+        adapter = new NotificationAdapter(options,getApplicationContext());
         RecyclerView recyclerView = findViewById(R.id.recycler);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

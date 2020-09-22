@@ -3,7 +3,12 @@ package com.ron.exploreapp.model_data;
 public class Notification {
     private String title;
     private String description;
+    private String image;
     private int priority;
+
+    public String getImage() {
+        return image;
+    }
 
     public String getTitle() {
         return title;
@@ -21,10 +26,11 @@ public class Notification {
 
     }
 
-    public Notification(String title, String description, int priority) {
+    public Notification(String title, String description,String image, int priority) {
 
         this.title = title;
         this.description = description;
+        this.image=image;
         this.priority = priority;
 
     }
