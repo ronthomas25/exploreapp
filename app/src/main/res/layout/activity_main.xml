@@ -38,17 +38,18 @@
              android:layout_alignParentRight="true"
              android:layout_marginTop="10dp"
              android:onClick="onClick"
-             android:tint="@color/cardview_dark_background"
              android:src="@drawable/location_icon"
-             tools:ignore="OnClick" />
+             tools:ignore="OnClick"
+             app:tint="@color/cardview_dark_background" />
 
         <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Top Picks"
-        android:textColor="#000000"
+            android:textColor="#DC030303"
         android:id="@+id/top_picks"
-        android:textSize="17sp"
+        android:textSize="20sp"
+        android:textStyle="bold"
         android:paddingLeft="10dp"
         android:paddingTop="15dp"
         android:layout_below="@id/discover"
@@ -90,10 +91,11 @@
              android:layout_below="@+id/linearlayout"
              android:layout_marginLeft="10dp"
              android:paddingTop="1dp"
-             android:text="Most searched places"
+             android:text="Most Searched Places"
              android:layout_marginTop="15dp"
-             android:textColor="#030303"
-             android:textSize="17sp"/>
+             android:textColor="#DC030303"
+             android:textSize="20sp"
+             android:textStyle="bold"/>
 
 
          <TextView
@@ -105,8 +107,9 @@
              android:layout_marginLeft="10dp"
              android:paddingTop="1dp"
              android:text="Popular Restaurants"
-             android:textColor="#030303"
-             android:textSize="17sp" />
+             android:textColor="#DC030303"
+             android:textSize="20sp"
+             android:textStyle="bold" />
 
          <androidx.recyclerview.widget.RecyclerView
              android:id="@+id/most_searched_recycler"
