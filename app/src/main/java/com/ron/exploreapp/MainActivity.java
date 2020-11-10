@@ -21,12 +21,15 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.ron.exploreapp.adapter.hotels_adapter;
 import com.ron.exploreapp.adapter.mostsearched_adapter;
+import com.ron.exploreapp.adapter.popularstays_adapter;
 import com.ron.exploreapp.adapter.rest_adapter;
 import com.ron.exploreapp.model_data.hotels_data;
 import com.ron.exploreapp.model_data.hotels_firebasedata;
 import com.ron.exploreapp.model_data.most_srcd_firebasedata;
 import com.ron.exploreapp.model_data.mostsearched_data;
 import com.ron.exploreapp.model_data.popular_restaurent_data;
+import com.ron.exploreapp.model_data.popularstays_data;
+import com.ron.exploreapp.model_data.popularstays_firebasedata;
 import com.ron.exploreapp.model_data.rest_firebasedata;
 import com.ron.exploreapp.model_data.top_picks_data;
 import com.ron.exploreapp.model_data.toppicks_firebase_data;
@@ -37,7 +40,7 @@ import java.util.List;
 
 public class MainActivity extends BaseActivity{
 
-    RecyclerView rest_recyclerview, mostsearched_recyclerview,hotels_recyclerview;
+    RecyclerView rest_recyclerview, mostsearched_recyclerview,hotels_recyclerview,popularstays_recyclerview;
     ImageView loc_search;
     DatabaseReference databaseReference;
 
@@ -137,6 +140,24 @@ public class MainActivity extends BaseActivity{
             }
         });
 
+        databaseReference=FirebaseDatabase.getInstance().getReference().child("popularstays");
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                List<popularstays_data> popularstaysDataList=new ArrayList<>();
+                for(DataSnapshot data: snapshot.getChildren()){
+                    popularstays_firebasedata modeldata=data.getValue(popularstays_firebasedata.class);
+                    popularstaysDataList.add(new popularstays_data(modeldata.getDesc(),modeldata.getImg_inner(),modeldata.getImg_outer(),modeldata.getLat(),
+                            modeldata.getLon(),modeldata.getPlace(),modeldata.getRating(),modeldata.getState()));
+                }
+                popularstays_recycler(popularstaysDataList);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+
 
     }
 
@@ -172,6 +193,14 @@ public class MainActivity extends BaseActivity{
         hotels_adapter hotels_adapter=new hotels_adapter(this,hotelsDataList);
         hotels_recyclerview.setAdapter(hotels_adapter);
         hotels_recyclerview.setLayoutManager(new LinearLayoutManager(this,hotels_recyclerview.HORIZONTAL,false));
+    }
+
+    private void popularstays_recycler(List<popularstays_data> popularstaysDataList)
+    {
+        popularstays_recyclerview=findViewById(R.id.popularstays_recycler);
+        popularstays_adapter popularstays_adapter=new popularstays_adapter(this,popularstaysDataList);
+        popularstays_recyclerview.setAdapter(popularstays_adapter);
+        popularstays_recyclerview.setLayoutManager(new LinearLayoutManager(this,popularstays_recyclerview.HORIZONTAL,false));
     }
 
     private void slideronclick(final List<top_picks_data> topPicksDataList, ImageSlider imageslider)

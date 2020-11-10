@@ -11,6 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".popularstays_activity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".rest_search_activity"
             android:screenOrientation="portrait" />
         <activity android:name=".gridview_image_activity" />
@@ -33,7 +36,7 @@
             android:name=".LogInActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".SplashActivity"
+            android:name=".MainActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".NotificationActivity"
@@ -51,12 +54,11 @@
         <activity
             android:name=".mostsearched_activity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".hotels_activity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".MainActivity"
+            android:name=".SplashActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -65,8 +67,8 @@
             </intent-filter>
         </activity>
     </application>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
 </manifest>

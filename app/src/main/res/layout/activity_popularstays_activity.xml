@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/design_default_color_background"
+    android:id="@+id/coordinatorlayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".popularstays_activity"
+    tools:ignore="MissingClass">
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbarlayout"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:background="@color/design_default_color_background"
+        app:elevation="0dp"
+        tools:ignore="InvalidId">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:expandedTitleMarginStart="38dp"
+            app:layout_scrollFlags="scroll|enterAlways"
+            android:id="@+id/collapsinglayout">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="330dp"
+                android:layout_margin="10dp"
+                android:layout_marginBottom="10dp"
+                app:cardCornerRadius="40dp">
+
+                <ImageView
+                    android:id="@+id/placeimg"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_launcher_background" />
+
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                app:layout_collapseMode="none"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:theme="@style/ThemeOverlay.MaterialComponents.Light">
+
+            </androidx.appcompat.widget.Toolbar>
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+
+        <RelativeLayout
+            android:id="@+id/relativelayout"
+            android:layout_width="match_parent"
+            android:layout_height="480dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kerala,India"
+                android:textSize="20dp"
+                android:id="@+id/state"
+                android:layout_marginLeft="59dp"
+                android:layout_marginTop="8dp"
+                android:textColor="@android:color/black"/>
+
+            <RatingBar
+                android:id="@+id/ratingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/state"
+                android:layout_marginLeft="-45dp"
+                android:scaleX="0.4"
+                android:scaleY="0.4"
+                android:progressTint="#D4AF37"
+                android:isIndicator="true"
+                tools:ignore="UnknownId" />
+
+            <TextView
+                android:id="@+id/rating"
+                android:layout_width="76dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/state"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="150dp"
+                android:text="text"
+                android:textSize="20sp"
+                tools:ignore="NotSibling" />
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tablayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ratingBar"
+                app:tabIndicatorColor="@android:color/black"
+                app:tabIndicatorFullWidth="false"
+                app:tabGravity="fill">
+
+                <com.google.android.material.tabs.TabItem
+                    android:id="@+id/firstfrag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Overview" />
+
+                <com.google.android.material.tabs.TabItem
+                    android:id="@+id/secondfrag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Images" />
+
+                <com.google.android.material.tabs.TabItem
+                    android:id="@+id/thirdfrag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Review"
+                    tools:ignore="InvalidId" />
+            </com.google.android.material.tabs.TabLayout>
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="650dp"
+                android:layout_below="@+id/tablayout"
+                android:layout_marginTop="2dp" />
+
+            <ImageView
+                android:id="@+id/loc_icon"
+                android:layout_width="46dp"
+                android:layout_height="48dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="-5dp"
+                app:srcCompat="@drawable/locationicon2" />
+
+            <ImageView
+                android:id="@+id/gps_icon"
+                android:layout_width="61dp"
+                android:layout_height="41dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="43dp"
+                android:layout_marginRight="50dp"
+                app:srcCompat="@drawable/gps1" />
+
+
+        </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
