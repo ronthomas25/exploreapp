@@ -28,7 +28,7 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".LogInActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".MainActivity"
+        <activity android:name=".SplashActivity"
             android:screenOrientation="portrait"/>
         <activity android:name=".NotificationActivity"
             android:screenOrientation="portrait"/>
@@ -43,7 +43,7 @@
         <activity android:name=".mostsearched_activity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".SplashActivity"
+            android:name=".MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
