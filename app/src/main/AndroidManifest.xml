@@ -3,9 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.ron.exploreapp">
 
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -13,35 +10,51 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".rest_search_activity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".rest_search_activity"
+            android:screenOrientation="portrait" />
         <activity android:name=".gridview_image_activity" />
-        <activity android:name=".Nointernet"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".loc_search_activity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".search_loc"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".SignUpActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".AccountActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".LogInActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".SplashActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".NotificationActivity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".Nointernet"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".loc_search_activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".search_loc"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SignUpActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AccountActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".LogInActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SplashActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".NotificationActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".SearchActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustNothing" />
-        <activity android:name=".rest_activity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".toppicks_activity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".mostsearched_activity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".rest_activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".toppicks_activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mostsearched_activity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".hotels_activity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait">
@@ -52,5 +65,8 @@
             </intent-filter>
         </activity>
     </application>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
 </manifest>

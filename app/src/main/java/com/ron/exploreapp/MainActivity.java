@@ -19,8 +19,11 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.ron.exploreapp.adapter.hotels_adapter;
 import com.ron.exploreapp.adapter.mostsearched_adapter;
 import com.ron.exploreapp.adapter.rest_adapter;
+import com.ron.exploreapp.model_data.hotels_data;
+import com.ron.exploreapp.model_data.hotels_firebasedata;
 import com.ron.exploreapp.model_data.most_srcd_firebasedata;
 import com.ron.exploreapp.model_data.mostsearched_data;
 import com.ron.exploreapp.model_data.popular_restaurent_data;
@@ -34,7 +37,7 @@ import java.util.List;
 
 public class MainActivity extends BaseActivity{
 
-    RecyclerView rest_recyclerview, mostsearched_recyclerview;
+    RecyclerView rest_recyclerview, mostsearched_recyclerview,hotels_recyclerview;
     ImageView loc_search;
     DatabaseReference databaseReference;
 
@@ -116,6 +119,24 @@ public class MainActivity extends BaseActivity{
             }
         });
 
+        databaseReference=FirebaseDatabase.getInstance().getReference().child("hotels");
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                List<hotels_data> hotelsDataList=new ArrayList<>();
+                for(DataSnapshot data: snapshot.getChildren()){
+                    hotels_firebasedata modeldata=data.getValue(hotels_firebasedata.class);
+                    hotelsDataList.add(new hotels_data(modeldata.getDesc(),modeldata.getImg_inner(),modeldata.getImg_outer(),modeldata.getLat(),
+                            modeldata.getLon(),modeldata.getPlace(),modeldata.getRating(),modeldata.getState()));
+                }
+                hotels_recycler(hotelsDataList);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+
 
     }
 
@@ -145,7 +166,15 @@ public class MainActivity extends BaseActivity{
        rest_recyclerview.setLayoutManager(new LinearLayoutManager(this,rest_recyclerview.HORIZONTAL,false));
    }
 
-   private void slideronclick(final List<top_picks_data> topPicksDataList, ImageSlider imageslider)
+    private void hotels_recycler(List<hotels_data> hotelsDataList)
+    {
+        hotels_recyclerview=findViewById(R.id.hotels_recycler);
+        hotels_adapter hotels_adapter=new hotels_adapter(this,hotelsDataList);
+        hotels_recyclerview.setAdapter(hotels_adapter);
+        hotels_recyclerview.setLayoutManager(new LinearLayoutManager(this,hotels_recyclerview.HORIZONTAL,false));
+    }
+
+    private void slideronclick(final List<top_picks_data> topPicksDataList, ImageSlider imageslider)
    {
        final Intent intent=new Intent(this, toppicks_activity.class);
        imageslider.setItemClickListener(new ItemClickListener() {
